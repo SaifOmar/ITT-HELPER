@@ -27,12 +27,11 @@ class Training(models.Model):
 class Course(models.Model):
     CourseName = models.CharField(max_length=100)
     Path = models.ManyToManyField(CareerPath, blank = False, related_name="Courses")
-    RelatedEvents = models.ForeignKey(EventsAndWorkshops, blank= True, related_name="Courses")
+    RelatedEvents = models.ManyToManyFieldy(EventsAndWorkshops, blank= True, related_name="Courses")
     
 
 class Jobs(models.Model):
     JobName = models.CharField()
     JobDiscribtion = models.TextField()
-    JobTrack = models.ManyToManyField(CareerPath)
-    JobRelatedEvents = models.ManyToManyField(EventsAndWorkshops)
     JobTraining = models.ManyToManyField(Training)
+    JobAssociations = models.ManyToManyField(CareerPath)
