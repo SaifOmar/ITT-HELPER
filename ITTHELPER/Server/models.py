@@ -45,3 +45,7 @@ class Jobs(models.Model):
     JobDiscribtion = models.TextField()
     JobTraining = models.ManyToManyField(Training)
     JobAssociations = models.ManyToManyField(CareerPath)
+
+
+
+

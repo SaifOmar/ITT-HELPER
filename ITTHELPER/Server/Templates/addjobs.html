@@ -1,0 +1,7 @@
+{% extends 'base.html' %}
+{% load static %}
+
+<form action="">
+    {% csrf_token %}
+    {{form.as_p}}
+</form>
