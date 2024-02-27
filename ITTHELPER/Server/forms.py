@@ -3,7 +3,7 @@ from django.forms import ModelForm
 
 class CourseForm(ModelForm):
     class Meta : 
-        Model = Course 
+        model = Course 
         fields = "__all__"
 
 

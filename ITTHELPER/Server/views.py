@@ -27,6 +27,10 @@ def CoursesView(request):
     courses = Course.objects.all()
     return render(request,"courses.html" , {"course":courses})
 
+def JobsView(request):
+    jobs = Jobs.objects.all()
+    return render(request, "jobs.html",{"job":jobs})
+
 def CourseDetialView(request,id):
     course_detail = Course.objects.get(id=id)
     return render(request, "coursedetial.html" , {'course':course_detail})
@@ -36,54 +40,59 @@ def CareerPathView(request):
     return render(request, "careerpaths.html", {"careerpath": careerpath})
 
 def AddCoursesView(request):
-    form = CourseForm()
+    form = CourseForm(request.POST)
     if request.method == "POST":
         if form.is_valid():
             form.save()
-    return render(request,"addcourses.html")
+            return redirect(CoursesView)
+        else:
+            return render(request, "addcourses.html",{"form":form})
+    return render(request,"addcourses.html",{"form":form})
 
 
 def AddCareerPathView(request):
-    form = CareerPathForm()
+    form = CareerPathForm(request.POST)
     if request.method == "POST":
         if form.is_valid():
             form.save()
+            return redirect(CareerPathView)
         else:
-            return render(request)
-    return render(request,"addcareerpaths.html")
+            return render(request,"addcareerpaths.html",{"form":form})
+    return render(request,"addcareerpaths.html",{"form":form})
 
 
 
 def AddJobView(request):
-    form = JobsForm()
+    form = JobsForm(request.POST)
     if request.method == "POST":
         if form.is_valid():
             form.save()
+            return redirect(JobsView)
         else:
-            return render(request)
-    return render(request,"addjobs.html") 
+            return render(request,"addjobs.html",{"form":form})
+    return render(request,"addjobs.html",{"form":form}) 
 
 
 
 def AddTrainingView(request):
-    form = TrainingForm()
+    form = TrainingForm(request.POST)
     if request.method == "POST":
         if form.is_valid():
             form.save()
         else:
-            return render(request)
-    return render(request,"addtraining.html") 
+            return render(request,"addtraining.html",{"form":form})
+    return render(request,"addtraining.html",{"form":form}) 
 
 
 
 def AddEvents(request):
-    form = EventsForm()
+    form = EventsForm(request.POST)
     if request.method == "POST":
         if form.is_valid():
-            form .save()
+            form.save()
         else:
-            return
-    return render(request,"addevents.html")
+            return render(request,"addevents.html",{"form":form})
+    return render(request,"addevents.html",{"form":form})
 
 def CVView(request):
     return render(request, "cv.html")
@@ -93,3 +102,65 @@ def EmploymentView(request):
 
 def InterviewGuidesView(request):
     return render(request,"guides.html")
+
+
+
+def UpdateCourse(request,id):
+    obj = get_object_or_404(id=id)
+    pass
+
+
+def UpdateJob(request,id):
+    obj = get_object_or_404(id=id)
+    pass
+
+
+def UpdateCareerPath():
+    obj = get_object_or_404(id=id)
+    pass
+
+
+def UpdateEvents():
+    obj = get_object_or_404(id=id)
+    pass
+
+
+def UpdateTraining():
+    obj = get_object_or_404(id=id)
+    pass
+
+
+def DeleteCourse(request):
+    if request.method == "DELETE":
+        obj = Course.objects.get(id=id)
+        obj.delete()
+        return redirect(CoursesView)
+
+
+def DeleteJob(request):
+    if request.method == "DELETE":
+        obj = Course.objects.get(id=id)
+        obj.delete()
+        return redirect(JobsView)
+
+
+def DeleteCareerPath(request):
+    if request.method == "DELETE":
+        obj = Course.objects.get(id=id)
+        obj.delete()
+        return redirect(CareerPathView)
+
+
+def DeleteEvents(request):
+   if request.method == "DELETE":
+        obj = Course.objects.get(id=id)
+        obj.delete()
+        return redirect(EventsView)
+    
+
+
+def DeleteTraining(request):
+    if request.method == "DELETE":
+        obj= Training.objects.get(id=id)
+        obj.delete()
+        return redirect(TrainingView)
