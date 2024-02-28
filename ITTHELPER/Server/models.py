@@ -3,18 +3,17 @@ from django.db import models
 # Create your models here.
 # note make models for courses /career paths/events/...
 # many to many relations 
-
-class CareerPath(models.Model):
-    CareerPath_CHOICES = [
+CareerPath_CHOICES = [
         ('path1', 'Path 1'),
         ('path2', 'Path 2'),
         # ... other choices
     ]
-    # fix this later it should be careerpathname not company name
-    CompanyName = models.CharField(max_length=50, choices=CareerPath_CHOICES)
+
+class CareerPath(models.Model):
+    Paths = models.CharField(max_length=50, choices=CareerPath_CHOICES)
     
     def __str__ (self):
-        return f"{self.CompanyName}"
+        return f"{self.Paths}"
 
     
 
@@ -44,7 +43,7 @@ class Training(models.Model):
     TrainingName = models.CharField(max_length=100)
     TrainingTime = models.TimeField()
     TrainingPlace = models.CharField(max_length = 100)
-    TrainingCompany = models.ManyToManyField(Company,blank = True, null= True, related_name="Training" )
+    TrainingCompany = models.ManyToManyField(Company,blank = True,  related_name="Training" )
 
     def __str__ (self):
         return f"{self.TrainingName}"
