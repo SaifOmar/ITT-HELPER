@@ -1,20 +1,25 @@
+{% extends 'base.html' %}
 {% load static %}
-{% include 'base.html' %}
-	<header class="container-fluid header-bg text-white text-center py-5">
+
+{% block title %}
+Events
+      {% endblock %}
+	<!-- <header class="container-fluid header-bg text-white text-center py-5">
         <h1 class="display-4">Events & Workshops</h1>
-    </header>
+    </header> -->
+{% block body %}
 
-    <!-- Conferences Section -->
-    <section class="container my-5">
-        <!-- استخدم CSS Grid أو Flexbox لعرض المؤتمرات -->
-        <div class="conference-card">
-            <img src="img/conference1.jpg" alt="Conference Image">
-            <h3>NSP Explore</h3>
-            <p>Date: January 31, 2024</p>
-            <p>Location: Tanta, Al Gharbia</p>
-            <a href="#" class="btn btn-primary">Register</a>
+ <!-- Conferences Section -->
+ <section class="container my-5">
+     <!-- استخدم CSS Grid أو Flexbox لعرض المؤتمرات -->
+     <div class="conference-card">
+         <img src="img/conference1.jpg" alt="Conference Image">
+         <h3>NSP Explore</h3>
+         <p>Date: January 31, 2024</p>
+         <p>Location: Tanta, Al Gharbia</p>
+         <a href="#" class="btn btn-primary">Register</a>
         </div>
-
+        
         <div class="conference-card">
             <img src="img/conference2.jpg" alt="Conference Image">
             <h3>DevFest</h3>
@@ -22,81 +27,14 @@
             <p>Location: Shibin-Elkom, Menoufia</p>
             <a href="#" class="btn btn-primary">Register</a>
         </div>
-
+        
         <!-- أضف المزيد من البطاقات حسب الحاجة -->
     </section>
-
-<a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="fa fa-angle-double-up"></i></a>
-
-
     
-    <!-- Footer Start -->
-    <div class="container-fluid bg-dark text-white-50 py-5 px-sm-3 px-lg-5" style="margin-top: 90px;">
-        <div class="row pt-5">
-            <div class="col-lg-3 col-md-6 mb-5">
-                <a href="" class="navbar-brand">
-                    <h1 class="text-primary"><span class="text-white">ITT</span>Helper</h1>
-                </a>
-                <p>You can contact us at any time to answer your inquiries and to provide the best services.</p>
-                <h6 class="text-white text-uppercase mt-4 mb-3" style="letter-spacing: 5px;">Follow Us</h6>
-                <div class="d-flex justify-content-start">
-				<a class="btn btn-outline-primary btn-square mr-2" href="https://www.facebook.com/profile.php?id=100090024653201&mibextid=ZbWKwL"><i class="fab fa-facebook-f"></i></a>
-				<a class="btn btn-outline-primary btn-square mr-2" href="https://www.linkedin.com/company/nsp-community/"><i class="fab fa-linkedin-in"></i></a>
-				<a class="btn btn-outline-primary btn-square mr-2" href="https://wa.me/qr/2US7ZRHCKJVCL1"><i class="fab fa-whatsapp"></i></a>
-				</div>
-
-            </div>
-            <div class="col-lg-3 col-md-6 mb-5">
-                <h5 class="text-white text-uppercase mb-4" style="letter-spacing: 5px;">Our Services</h5>
-                <div class="d-flex flex-column justify-content-start">
-                    <a class="text-white-50 mb-2" href="Courses.html"><i class="fa fa-angle-right mr-2"></i>Courses</a>                   
-                    <a class="text-white-50 mb-2" href="Training.html"><i class="fa fa-angle-right mr-2"></i>Training</a>
-                    <a class="text-white-50 mb-2" href="Career Path.html"><i class="fa fa-angle-right mr-2"></i>Career Path</a>
-					<a class="text-white-50 mb-2" href="Employment Market.html"><i class="fa fa-angle-right mr-2"></i>Employment Market</a>
-                  
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 mb-5">
-                <h5 class="text-white text-uppercase mb-4" style="letter-spacing: 5px;">Usefull Links</h5>
-                <div class="d-flex flex-column justify-content-start">
-                    <a class="text-white-50 mb-2" href="Events & Workshops.html"><i class="fa fa-angle-right mr-2"></i>Events & Workshops</a>
-					<a class="text-white-50 mb-2" href="Guides for Interviews.html"><i class="fa fa-angle-right mr-2"></i>Guides for Interviews</a>
-                    <a class="text-white-50 mb-2" href="CVs Tips.html"><i class="fa fa-angle-right mr-2"></i>Tips for CVs</a>
-                   
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 mb-5">
-                <h5 class="text-white text-uppercase mb-4" style="letter-spacing: 5px;">Contact Us</h5>
-                <p><i class="fa fa-map-marker-alt mr-2"></i>Shibin-Elkom</p>
-                <p><i class="fa fa-phone-alt mr-2"></i>+01021572715</p>
-                <p><i class="fa fa-envelope mr-2"></i>nspcommunity865@gmail.com</p>
-                
-            </div>
-        </div>
-    </div>
-    </div>
-   
-    <!-- Footer End -->
-
-
-    <!-- Back to Top -->
     <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="fa fa-angle-double-up"></i></a>
+    
+    
+{% endblock %}
+    
 
-    <!-- JavaScript Libraries -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-    <script src="lib/easing/easing.min.js"></script>
-    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-    <script src="lib/tempusdominus/js/moment.min.js"></script>
-    <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
-    <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
 
-    <!-- Contact Javascript File -->
-    <script src="mail/jqBootstrapValidation.min.js"></script>
-    <script src="mail/contact.js"></script>
-
-    <!-- Template Javascript -->
-    <script src="js/main.js"></script>
-</body>
-
-</html>

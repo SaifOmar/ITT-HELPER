@@ -1,2 +1,19 @@
 {% extends 'base.html' %}
 {% load static %}
+
+
+{% block body %}
+{%  for course in courses %}
+    <h4>{{course.CourseName}}</h4>
+    <ul>
+        {% for path in course.Path.all %}
+        <li>
+            {{path}}
+        </li>
+        {% endfor %}
+        {% for event in course.RelatedEvents.all %}
+        <li>{{event}}</li>
+        {% endfor %}
+    </ul>
+{% endfor %}
+{% endblock%}

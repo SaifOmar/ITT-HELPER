@@ -1,19 +1,24 @@
+{% extends 'base.html' %}
 {% load static %}
-{% include 'base.html' %}
 
-    <!-- Carousel Start -->
-    <div class="container-fluid p-0">
-        <div id="header-carousel" class="carousel slide" data-ride="carousel">
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img class="w-100" src="{% static 'images/carousel-3.jpg' %}" alt="Image">
-                    <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
-                        <div class="p-3" style="max-width: 900px;">
-                            <h2 class="text-white text-uppercase mb-md-3">ITT Helper</h2>
-                            <h1 class="display-3 text-white mb-md-4">Let's Discover Your Career Together</h1>
+{% block title %}
+    ITT Helper
+{% endblock %}
+    
+{% block body %}
+        <!-- Carousel Start -->
+        <div class="container-fluid p-0">
+            <div id="header-carousel" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img class="w-100" src="{% static 'images/carousel-3.jpg' %}" alt="Image">
+                        <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                            <div class="p-3" style="max-width: 900px;">
+                                <h2 class="text-white text-uppercase mb-md-3">ITT Helper</h2>
+                                <h1 class="display-3 text-white mb-md-4">Let's Discover Your Career Together</h1>
+                            </div>
                         </div>
                     </div>
-                </div>
                 </div>
             </div>
         </div>
@@ -21,14 +26,14 @@
     <!-- Carousel End -->
 
 
-   
+
 
 
     <!-- About Start -->
     <div class="container-fluid py-5">
         <div class="container pt-5">
             <div class="row">
-			<div class="col-lg-6" style="min-height: 500px;">
+                <div class="col-lg-6" style="min-height: 500px;">
                     <div class="position-relative h-100">
                         <img class="position-absolute w-100 h-100" src="{% static 'images/about.png' %}" style="object-fit: cover;">
                     </div>
@@ -47,126 +52,62 @@
                             </div>
                         </div>
                         <a href="./Registration.html" class="btn btn-primary mt-1">Sign Up</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- About End -->
-
-
-    <!-- Registration Start -->
-    <div class="container-fluid bg-registration py-5" style="margin: 90px 0;">
-        <div class="container py-5">
-            <div class="row align-items-center">
-                <div class="col-lg-7 mb-5 mb-lg-0">
-                    <div class="mb-4">
-                        <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">ITT Helper</h6>
-                        <h1 class="text-white"><span class="text-primary"></span>We will help you to start your career </h1>
-                    </div>
-                    <p class="text-white">ITT Helper helps others start their careers by providing guidance, support and resources to empower them on their career journey.</p>
-                    <ul class="list-inline text-primary m-0">
-                        <li class="py-2"><i class="fa fa-check text-primary mr-3"></i>Guidance and Mentorship</li>
-                        <li class="py-2"><i class="fa fa-check text-primary mr-3"></i>Networking Opportunities</li>
-                        <li class="py-2"><i class="fa fa-check text-primary mr-3"></i>Skill Development and Training</li>
-                    </ul>
-                </div>
-                <div class="col-lg-5">
-                    <div class="card border-0">
-                        <div class="card-header bg-primary text-center p-4">
-                            <h1 class="text-white m-0">Log in Now</h1>
-                        </div>
-                        <div class="card-body rounded-bottom bg-white p-5">
-                            <form>
-                                <div class="form-group">
-                                    <input type="text" class="form-control p-4" placeholder="Nick name" required="required" />
-                                </div>
-                                <div class="form-group">
-                                    <input type="email" class="form-control p-4" placeholder="Your email" required="required" />
-                                </div>
-                                <div class="form-group">
-                                    <input type="password" class="form-control p-4" placeholder="password" required="required" />
-                                </div>
-                                <div>
-                                    <button class="btn btn-primary btn-block py-3" type="submit">Log in Now</button>
-                                </div>
-                            </form>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <!-- Registration End -->
-
-
-    <!-- Footer Start -->
-    <div class="container-fluid bg-dark text-white-50 py-5 px-sm-3 px-lg-5" style="margin-top: 90px;">
-        <div class="row pt-5">
-            <div class="col-lg-3 col-md-6 mb-5">
-                <a href="" class="navbar-brand">
-                    <h1 class="text-primary"><span class="text-white">ITT</span>Helper</h1>
-                </a>
-                <p>You can contact us at any time to answer your inquiries and to provide the best services.</p>
-                <h6 class="text-white text-uppercase mt-4 mb-3" style="letter-spacing: 5px;">Follow Us</h6>
-                <div class="d-flex justify-content-start">
-				<a class="btn btn-outline-primary btn-square mr-2" href="https://www.facebook.com/profile.php?id=100090024653201&mibextid=ZbWKwL"><i class="fab fa-facebook-f"></i></a>
-				<a class="btn btn-outline-primary btn-square mr-2" href="https://www.linkedin.com/company/nsp-community/"><i class="fab fa-linkedin-in"></i></a>
-				<a class="btn btn-outline-primary btn-square mr-2" href="https://wa.me/qr/2US7ZRHCKJVCL1"><i class="fab fa-whatsapp"></i></a>
-				</div>
-
-            </div>
-            <div class="col-lg-3 col-md-6 mb-5">
-                <h5 class="text-white text-uppercase mb-4" style="letter-spacing: 5px;">Our Services</h5>
-                <div class="d-flex flex-column justify-content-start">
-                    <a class="text-white-50 mb-2" href="Courses.html"><i class="fa fa-angle-right mr-2"></i>Courses</a>                   
-                    <a class="text-white-50 mb-2" href="Training.html"><i class="fa fa-angle-right mr-2"></i>Training</a>
-                    <a class="text-white-50 mb-2" href="Career Path.html"><i class="fa fa-angle-right mr-2"></i>Career Path</a>
-					<a class="text-white-50 mb-2" href="Employment Market.html"><i class="fa fa-angle-right mr-2"></i>Employment Market</a>
-                  
+        <!-- About End -->
+        
+        
+        <!-- Registration Start -->
+        <div class="container-fluid bg-registration py-5" style="margin: 90px 0;">
+            <div class="container py-5">
+                <div class="row align-items-center">
+                    <div class="col-lg-7 mb-5 mb-lg-0">
+                        <div class="mb-4">
+                            <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">ITT Helper</h6>
+                            <h1 class="text-white"><span class="text-primary"></span>We will help you to start your career </h1>
+                        </div>
+                        <p class="text-white">ITT Helper helps others start their careers by providing guidance, support and resources to empower them on their career journey.</p>
+                        <ul class="list-inline text-primary m-0">
+                            <li class="py-2"><i class="fa fa-check text-primary mr-3"></i>Guidance and Mentorship</li>
+                            <li class="py-2"><i class="fa fa-check text-primary mr-3"></i>Networking Opportunities</li>
+                            <li class="py-2"><i class="fa fa-check text-primary mr-3"></i>Skill Development and Training</li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-5">
+                        <div class="card border-0">
+                            <div class="card-header bg-primary text-center p-4">
+                                <h1 class="text-white m-0">Log in Now</h1>
+                            </div>
+                            <div class="card-body rounded-bottom bg-white p-5">
+                                <form>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control p-4" placeholder="Nick name" required="required" />
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="email" class="form-control p-4" placeholder="Your email" required="required" />
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="password" class="form-control p-4" placeholder="password" required="required" />
+                                    </div>
+                                    <div>
+                                        <button class="btn btn-primary btn-block py-3" type="submit">Log in Now</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="col-lg-3 col-md-6 mb-5">
-                <h5 class="text-white text-uppercase mb-4" style="letter-spacing: 5px;">Usefull Links</h5>
-                <div class="d-flex flex-column justify-content-start">
-                    <a class="text-white-50 mb-2" href="Events & Workshops.html"><i class="fa fa-angle-right mr-2"></i>Events & Workshops</a>
-					<a class="text-white-50 mb-2" href="Guides for Interviews.html"><i class="fa fa-angle-right mr-2"></i>Guides for Interviews</a>
-                    <a class="text-white-50 mb-2" href="CVs Tips.html"><i class="fa fa-angle-right mr-2"></i>Tips for CVs</a>
-                   
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 mb-5">
-                <h5 class="text-white text-uppercase mb-4" style="letter-spacing: 5px;">Contact Us</h5>
-                <p><i class="fa fa-map-marker-alt mr-2"></i>Shibin-Elkom</p>
-                <p><i class="fa fa-phone-alt mr-2"></i>+01021572715</p>
-                <p><i class="fa fa-envelope mr-2"></i>nspcommunity865@gmail.com</p>
-                
             </div>
         </div>
-    </div>
-    </div>
+        <!-- Registration End -->
+        
+        
+    
+    
+{% endblock %}
+    
+    
    
-    <!-- Footer End -->
-
-
-    <!-- Back to Top -->
-    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="fa fa-angle-double-up"></i></a>
-
-    <!-- JavaScript Libraries -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-    <script src="lib/easing/easing.min.js"></script>
-    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-    <script src="lib/tempusdominus/js/moment.min.js"></script>
-    <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
-    <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
-
-    <!-- Contact Javascript File -->
-    <script src="mail/jqBootstrapValidation.min.js"></script>
-    <script src="mail/contact.js"></script>
-
-    <!-- Template Javascript -->
-    <script src="{% static 'js/main.js' %}"></script>
-</body>
-
-</html>

@@ -25,7 +25,7 @@ def EvnetDetailView(request,id):
 
 def CoursesView(request):
     courses = Course.objects.all()
-    return render(request,"courses.html" , {"course":courses})
+    return render(request,"courses.html" , {"courses":courses})
 
 def JobsView(request):
     jobs = Jobs.objects.all()
@@ -37,7 +37,7 @@ def CourseDetialView(request,id):
 
 def CareerPathView(request):
     careerpath = CareerPath.objects.all()
-    return render(request, "careerpaths.html", {"careerpath": careerpath})
+    return render(request, "path.html", {"careerpath": careerpath})
 
 def AddCoursesView(request):
     form = CourseForm(request.POST)

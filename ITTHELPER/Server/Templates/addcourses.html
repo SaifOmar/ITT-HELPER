@@ -1,7 +1,12 @@
 {% include 'base.html' %}
 {% load static %}
 
-<form action="">
+<form action="/courses/create" method="post" hx-post="/courses/create" hx-target="#content">
     {% csrf_token %}
-    {{form}}
+    {{form.as_p}}
+    <button type="submit">Add</button>
 </form>
+
+
+<div id="content">
+</div>

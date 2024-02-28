@@ -21,6 +21,10 @@ urlpatterns = [
     path('training/create',views.AddTrainingView,name="create_training"),
     path('careerpath/create',views.AddCareerPathView,name="create_path"),
     path('events/create',views.AddEvents,name="create_event"),
+
+    path('employment',views.EmploymentView,name="employment"),
+    path('cv',views.CVView,name="cv"),
+    path('guides',views.InterviewGuidesView,name="guides"),
     
 
 ]
