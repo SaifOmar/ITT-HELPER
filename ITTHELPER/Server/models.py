@@ -1,5 +1,4 @@
 from django.db import models
-
 # Create your models here.
 # note make models for courses /career paths/events/...
 # many to many relations 

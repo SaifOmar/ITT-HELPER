@@ -26,5 +26,4 @@ urlpatterns = [
     path('careerpath/delete/<int:id>',views.DeleteCareerPath,name="del_path"),
     path('events/delete/<int:id>',views.DeleteEvents,name="del_event"),
 
-
 ]

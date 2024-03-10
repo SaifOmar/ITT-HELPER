@@ -1,6 +1,8 @@
 from django.shortcuts import render, get_object_or_404,redirect
 from .models import Course , Training , EventsAndWorkshops,  Jobs, CareerPath
 from .forms import CourseForm,CareerPathForm,JobsForm,TrainingForm,EventsForm
+from django.contrib.auth import authenticate,login,logout
+
 # Create your views here.
 
 
@@ -152,3 +154,7 @@ def DeleteTraining(request):
         obj= Training.objects.get(id=id)
         obj.delete()
         return redirect(TrainingView)
+
+
+
+           
