@@ -30,7 +30,7 @@ class RegisterView(APIView):
     
 class LoginView(APIView):
     permission_classes= [AllowAny]
-    def post(self, request, format = any):
+    def post(self, request, format = None):
         if request.method == "POST":    
             u_e_p = request.data.get('username')
             password = request.data.get('password')
@@ -51,7 +51,7 @@ class LoginView(APIView):
             
 class LogoutView(APIView):
     permission_classes = [IsAuthenticated]
-    def post(self,request, format = any):
+    def post(self,request, format = None):
         if request.method == "POST":
             logout(request)
             return JsonResponse({"response" : "You logged out successfully"})
