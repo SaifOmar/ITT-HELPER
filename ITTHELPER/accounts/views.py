@@ -18,7 +18,6 @@ from rest_framework_simplejwt.tokens  import RefreshToken
 class RegisterView(APIView):
     permission_classes = [AllowAny]
     def post(self,request,format=None):
-        if request.method == "POST":
             data = request.data
             myuser = UserSerializer(data=data) 
             if myuser.is_valid():
@@ -26,35 +25,36 @@ class RegisterView(APIView):
                 if save_user : 
                     json = myuser.data
                     return Response(json)
-        return Response(myuser.errors)
+            return Response(myuser.errors)
     
 class LoginView(APIView):
     permission_classes= [AllowAny]
     def post(self, request, format = None):
-        if request.method == "POST":    
-            u_e_p = request.data.get('username')
-            password = request.data.get('password')
-            try :
-                user = authenticate(u_e_p=u_e_p, password=password)
-                if user :
-                    login(request,user)
-                    #pass user to the token endpoint to make the refresh token and return a response with the tokens and (..) ??
-                    token = RefreshToken.for_user(user)
-                    response  = {"refresh" : str(token),
-                                 "access" : str(token.access_token)}
-                    return JsonResponse(response)
-                else :
-                    return JsonResponse({"error": "An error happend while trying to log you in, Please try again!"})
-            except : 
-                    response = {"error" : "We couldn't find a user with the given username or password"}
-                    return JsonResponse(response)
+        u_e_p = request.data.get('username')
+        password = request.data.get('password')
+        try :
+            user = authenticate(u_e_p=u_e_p, password=password)
+            if user :
+                login(request,user)
+                #pass user to the token endpoint to make the refresh token and return a response with the tokens and (..) ??
+                token = RefreshToken.for_user(user)
+                response  = {"refresh" : str(token),
+                            "access" : str(token.access_token)}
+                return Response(response)
+            else :
+                return Response({"error": "An error happend while trying to log you in, Please try again!"})
+        except : 
+                response = {"error" : "We couldn't find a user with the given username or password"}
+                return Response(response)
+            
+    
             
 class LogoutView(APIView):
     permission_classes = [IsAuthenticated]
     def post(self,request, format = None):
         if request.method == "POST":
             logout(request)
-            return JsonResponse({"response" : "You logged out successfully"})
+            return Response({"response" : "You logged out successfully"})
 
 
 
