@@ -50,9 +50,7 @@ class LoginView(APIView):
     
             
 class LogoutView(APIView):
-    permission_classes = [IsAuthenticated]
-    def post(self,request, format = None):
-        if request.method == "POST":
+    def get(self,request, format = None):
             logout(request)
             return Response({"response" : "You logged out successfully"})
 
