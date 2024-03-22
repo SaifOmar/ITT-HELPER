@@ -4,6 +4,8 @@
 
 {% block body %}
 {%  for course in courses %}
+<div id = "course-{{course.id}}">
+
     <h4>{{course.CourseName}}</h4>
     <ul>
         {% for path in course.Path.all %}
@@ -15,5 +17,13 @@
         <li>{{event}}</li>
         {% endfor %}
     </ul>
-{% endfor %}
+    <button 
+    hx-delete="courses/delete/{{course.id}}" 
+    hx-target="#course-{{course.id}}"
+    hx-swap="outerHTML"
+    type="button"
+
+    >Delete</button>
+    {% endfor %}
+</div>
 {% endblock%}

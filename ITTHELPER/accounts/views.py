@@ -1,13 +1,19 @@
 from django.shortcuts import render
 from rest_framework.decorators import APIView
 from .serializers import UserSerializer
-from rest_framework.permissions import AllowAny
+from rest_framework.permissions import AllowAny,IsAuthenticated
 from rest_framework.response import Response
 from django.contrib.auth import authenticate,login, logout
 from Server.views import HomeView
 from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
 from .models import CustomUser
+from django.http import JsonResponse 
+from rest_framework_simplejwt.tokens  import RefreshToken
+
+
+#mvvm
+
 # Create your views here.
 class RegisterView(APIView):
     permission_classes = [AllowAny]
@@ -22,7 +28,46 @@ class RegisterView(APIView):
                     return Response(json)
         return Response(myuser.errors)
     
+class LoginView(APIView):
+    permission_classes= [AllowAny]
+    def post(self, request, format = any):
+        if request.method == "POST":    
+            u_e_p = request.data.get('username')
+            password = request.data.get('password')
+            try :
+                user = authenticate(u_e_p=u_e_p, password=password)
+                if user :
+                    login(request,user)
+                    #pass user to the token endpoint to make the refresh token and return a response with the tokens and (..) ??
+                    token = RefreshToken.for_user(user)
+                    response  = {"refresh" : str(token),
+                                 "access" : str(token.access_token)}
+                    return JsonResponse(response)
+                else :
+                    return JsonResponse({"error": "An error happend while trying to log you in, Please try again!"})
+            except : 
+                    response = {"error" : "We couldn't find a user with the given username or password"}
+                    return JsonResponse(response)
+            
+class LogoutView(APIView):
+    permission_classes = [IsAuthenticated]
+    def post(self,request, format = any):
+        if request.method == "POST":
+            logout(request)
+            return JsonResponse({"response" : "You logged out successfully"})
 
+
+
+
+
+##
+
+
+
+
+
+
+#mvc
     
 def sign_up_user(request):
     if request.method == 'POST':
@@ -54,12 +99,12 @@ def sign_up_user(request):
 
 def login_user(request):
     if request.method == "POST":
-        username = request.POST.get("username")
+        u_e_p = request.POST.get("username")
         password= request.POST.get("password")
         # print(username,password)
         try :
             user = authenticate(
-                u_e_p=username,
+                u_e_p=u_e_p,
                 password = password
             )
             if user is not None :

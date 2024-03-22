@@ -6,14 +6,17 @@ from .serilalizers import CompanySerializer,CourseSerializer,JobsSerializer,Even
 # Create your views here.
 
 router = routers.DefaultRouter()
-# router.register(r'users', UserViewSet)
-# router.register(r'accounts', AccountViewSet)
-# router.register(r'courses',views.course_view)
+# router.register(r"",views.mai)
+router.register(r"courses", views.course_view)
+router.register(r"companies", views.company_view)
+router.register(r"jobs", views.job_view)
+router.register(r"paths", views.path_view)
+router.register(r"training", views.training_view)
+router.register(r"events", views.events_view)
 
 urlpatterns = [
-    # path('forgot-password/', ForgotPasswordFormView.as_view()),
-    # i dont think we should need the queryset and serializer class 
-    path('courses',views.course_view.as_view(queryset= Course.objects.all(),serializer_class = CourseSerializer)) ]
+    # path('forgot-password/', ForgotPasswordFormView.as_view()), 
+    ]
     
 
 urlpatterns += router.urls

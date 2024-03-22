@@ -12,30 +12,30 @@ class CourseSerializer(serializers.ModelSerializer):
 class CompanySerializer(serializers.ModelSerializer):
     class Meta : 
         model = Company
-        feilds = "__all__"
+        fields = "__all__"
 
 
 class EventsSerializer(serializers.ModelSerializer):
     class Meta : 
         model = EventsAndWorkshops
-        feilds = "__all__"
+        fields = "__all__"
 
 
 class JobsSerializer(serializers.ModelSerializer):
     class Meta : 
         model = Jobs
-        feilds = "__all__"
+        fields = "__all__"
 
 
 class TrainingSerializer(serializers.ModelSerializer):
     class Meta : 
         model = Training
-        feilds = "__all__"
+        fields = "__all__"
 
 
 
 class PathSerializer(serializers.ModelSerializer):
     class Meta : 
         model = CareerPath
-        feilds = "__all__"
+        fields = "__all__"
 
