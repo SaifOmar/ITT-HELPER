@@ -105,6 +105,15 @@ def AddEvents(request):
 
 def UpdateCourse(request,id):
     obj = get_object_or_404(id=id)
+    form = EventsForm(request.POST, instance=obj)
+    if request.method == "POST":
+        if form.is_valid():
+            form.save()
+        else:
+            return render(request,"addcourse.html", {"form": form})
+        return render(request,"events.html")
+
+        
     pass
 
 def UpdateJob(request,id):

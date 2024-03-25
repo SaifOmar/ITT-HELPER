@@ -10,11 +10,15 @@ from django.contrib.auth.decorators import login_required
 from .models import CustomUser
 from django.http import JsonResponse 
 from rest_framework_simplejwt.tokens  import RefreshToken
+from django.views.decorators.csrf import csrf_exempt
+from django.utils.decorators import method_decorator
+
 
 
 #mvvm
 
 # Create your views here.
+# @method_decorator(csrf_exempt,name='dispatch')
 class RegisterView(APIView):
     permission_classes = [AllowAny]
     def post(self,request,format=None):
@@ -27,32 +31,38 @@ class RegisterView(APIView):
                     return Response(json)
             return Response(myuser.errors)
     
-class LoginView(APIView):
-    permission_classes= [AllowAny]
-    def post(self, request, format = None):
-        u_e_p = request.data.get('username')
-        password = request.data.get('password')
-        try :
-            user = authenticate(u_e_p=u_e_p, password=password)
-            if user :
-                login(request,user)
-                #pass user to the token endpoint to make the refresh token and return a response with the tokens and (..) ??
-                token = RefreshToken.for_user(user)
-                response  = {"refresh" : str(token),
-                            "access" : str(token.access_token)}
-                return Response(response)
-            else :
-                return Response({"error": "An error happend while trying to log you in, Please try again!"})
-        except : 
-                response = {"error" : "We couldn't find a user with the given username or password"}
-                return Response(response)
-            
-    
+# class LoginView(APIView):
+#     permission_classes= [AllowAny]
+#     def post(self, request, format = None):
+#         u_e_p = request.data.get('username')
+#         password = request.data.get('password')
+#         try :
+#             user = authenticate(u_e_p=u_e_p, password=password)
+#             if user is not None:
+#                 login(request,user)
+#                 token = RefreshToken.for_user(user)
+#                 response  = {"refresh" : str(token),
+#                             "access" : str(token.access_token)}
+#                 #pass user to the token endpoint to make the refresh token and return a response with the tokens and (..) ??
+#                 return Response(response)
+#             else :
+#                 return Response({"error": "An error happend while trying to log you in, Please try again!"})
+#         except : 
+#                 response = {"error" : "We couldn't find a user with the given username or password"}
+#                 return Response(response)
             
 class LogoutView(APIView):
-    def get(self,request, format = None):
-            logout(request)
-            return Response({"response" : "You logged out successfully"})
+    permission_classes = [IsAuthenticated]
+    @csrf_exempt
+    def post(self,request, format = None):
+            try :
+                refresh = request.data["refresh"]
+                token = RefreshToken(refresh)
+                token.blacklist() 
+                
+                return Response({"response":"You logged out successfully"})
+            except :
+                return Response({"response":"you are already logged out"})
 
 
 
@@ -109,13 +119,18 @@ def login_user(request):
                 login(request,user)
                 print(user)
                 return redirect(HomeView)
+            else : 
+                return render(request, "not_authed.html")
         except:
-            print("user in not vaild")    
+            #return htmx here 
+            print("user in not vaild")
 
-    return render(request, 'login.html') 
+    return render(request, 'login.html')
 
-@login_required
+
 def logout_user(request):
     if request.method == "POST":
         logout(request)
-    return redirect(HomeView)
+        return redirect(HomeView)
+    else :
+        return redirect(login_user)
