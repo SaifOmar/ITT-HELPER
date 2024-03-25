@@ -11,31 +11,30 @@ from rest_framework.viewsets import ModelViewSet
 # Create your views here.
 class course_view(ModelViewSet):
     permission_classes = [IsAuthenticated]
-    authentication_classes = [JWTAuthentication]
     queryset = Course.objects.all()
     serializer_class = CourseSerializer
 # there is an error here empty objects
 class job_view(ModelViewSet):
-    permission_classes = [AllowAny]
+    permission_classes = [IsAuthenticated]
     queryset = Jobs.objects.all()
     serializer_class = JobsSerializer
 
 class events_view(ModelViewSet):
-    permission_classes = [AllowAny]
+    permission_classes = [IsAuthenticated]
     queryset = EventsAndWorkshops.objects.all()
     serializer_class = EventsSerializer
 
 class training_view(ModelViewSet):
-    permission_classes = [AllowAny]
+    permission_classes = [IsAuthenticated]
     queryset = Training.objects.all()
     serializer_class = TrainingSerializer
 
 class path_view(ModelViewSet):
-    permission_classes = [AllowAny]
+    permission_classes = [IsAuthenticated]
     queryset = CareerPath.objects.all()
     serializer_class = PathSerializer
 
 class company_view(ModelViewSet):
-    permission_classes = [AllowAny]
+    permission_classes = [IsAuthenticated]
     queryset = Company.objects.all()
     serializer_class = CompanySerializer

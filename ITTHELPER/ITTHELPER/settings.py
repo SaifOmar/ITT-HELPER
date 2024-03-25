@@ -26,6 +26,7 @@ SECRET_KEY = 'django-insecure-oc6)8ubgvwwp=3-r0+%a1e0q%z$vr1fe(%@&i6t=s38(#_cd7)
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+# add allowed hosts when needed
 ALLOWED_HOSTS = []
 
 
@@ -46,7 +47,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework_simplejwt',
     'rest_framework_simplejwt.token_blacklist',
-    #allowing cors headers
+    # allowing cors headers
     'corsheaders',
 
 
@@ -60,28 +61,36 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
     'corsheaders.middleware.CorsMiddleware',
     
 ]
+
+
 AUTH_USER_MODEL = 'accounts.CustomUser'
+
+
 
 REST_FRAMEWORK = {
     # Use Django's standard `django.contrib.auth` permissions,
     # or allow read-only access for unauthenticated users.
     'DEFAULT_PERMISSION_CLASSES' :(
-        'rest_framework.permissions.IsAuthenticated',
-        # 'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly',
+        # non is needed for now
+        # 'rest_framework.permissions.IsAuthenticated',
+        
     ),
     'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework.authentication.BasicAuthentication',
-        'rest_framework.authentication.SessionAuthentication',
         'rest_framework_simplejwt.authentication.JWTAuthentication',
+
+        # the next two are not used anymore maybe if we do session based auth later
+        
+        # 'rest_framework.authentication.BasicAuthentication',
+        # 'rest_framework.authentication.SessionAuthentication',
     ),
     
 }
 
 AUTHENTICATION_BACKENDS = [
-    # Needed to login by username in Django admin, regardless of `allauth`
     'django.contrib.auth.backends.ModelBackend',
     'accounts.backends.MyCustomBackend'
     ]
