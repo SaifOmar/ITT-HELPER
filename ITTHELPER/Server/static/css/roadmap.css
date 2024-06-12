@@ -1,0 +1,53 @@
+body {
+    font-family: Arial, sans-serif;
+    background-image: url('img/r1.png');
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    max-width: 600px;
+    width: 100%;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+.roadmap {
+    margin-top: 20px;
+}
+
+.stage {
+    margin-bottom: 20px;
+}
+
+.stage h2 {
+    color: #555;
+}
+
+.stage ul {
+    list-style: none;
+    padding: 0;
+}
+
+.stage ul li {
+    background-color: #e9e9e9;
+    margin: 5px 0;
+    padding: 10px;
+    border-radius: 4px;
+}
+.stage ul li {
+    margin: 5px 0;
+    text-align: center;
+    font-size: 1.1em;
+}

@@ -16,7 +16,9 @@ urlpatterns = [
     path("contact-us", views.ContactUs,name="contact_us"),
     path("feedback", views.FeedBack,name="feedback"),
     path("chatbot", views.ChatBot,name="chatbot"),
-
+    path("roadmap-pen",views.RoadMap_pentesting,name="roadmap-pen_testing"), 
+    path("roadmap-red",views.RoadMap_red_teaming,name="roadmap-red_teaming"), 
+    path("roadmap-blue",views.RoadMap_blue_teaming,name="roadmap-blue_teaming"), 
     path('courses/create',views.AddCoursesView,name="create_course"),
     path('jobs/create',views.AddJobView,name="create_job"),
     path('training/create',views.AddTrainingView,name="create_training"),

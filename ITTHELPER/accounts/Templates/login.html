@@ -2,7 +2,6 @@
 {% load static %}
 {% block title %}Login{% endblock %}
 {% block body%}	
-
 		<div class="breadcrumbs overlay">
 			<div class="container">
 				<div class="bread-inner">
@@ -45,14 +44,14 @@
     <div class="row">
         <div class="col-lg-12 col-md-12 col-12"> <!-- Change the column width to span the full width -->
             <div class="form-group">
-                <input name="username" type="text" placeholder="Username" style="width: 230.5%;"> <!-- Set width to 100% -->
+                <input name="username" type="text" placeholder="Username" style="width: 190%;"> <!-- Set width to 100% -->
             </div>
         </div>
     </div>
     <div class="row">
         <div class="col-lg-12 col-md-12 col-12"> <!-- Change the column width to span the full width -->
             <div class="form-group">
-                <input name="password" type="password" placeholder="Password" style="width: 230.5%;"> <!-- Set width to 100% -->
+                <input name="password" type="password" placeholder="Password" style="width: 190%;"> <!-- Set width to 100% -->
             </div>
         </div>
     </div>
@@ -60,8 +59,10 @@
         <div class="col-lg-5 col-md-4 col-12">
             <div class="form-group">
                 <div class="button-group">
-                    &nbsp; <button type="submit" class="btn">Log In</button>
+                &nbsp; <button type="submit" class="btn">Log In</button>
+                <button type="button" class="btn"> <a href="{% url 'signup' %}">Sign Up</a></button>
                 </div>
+                
             </div>
         </div>
     </div>
@@ -69,6 +70,7 @@
         <div class="col-lg-12 col-md-12 col-12"> <!-- Change the column width to span the full width -->
             <p><a href="{ # }" style="color: #000000"><u>Forgot Password?</u></a></p>
         </div>
+        
     </div>
 </form>
 

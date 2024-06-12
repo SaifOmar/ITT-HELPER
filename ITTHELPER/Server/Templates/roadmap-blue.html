@@ -1,0 +1,60 @@
+{% load static %}
+{% block body %}
+<body style="background-image: url('{% static 'img/r1.png' %}');">
+    
+    <link rel="stylesheet" href="{% static 'css/roadmap.css' %}">
+<div class="container" style="padding-top: 550px;">
+        <h1><big><u>Blue Teaming Roadmap</u></big></h1>
+        <div class="roadmap">
+            <div class="stage">
+                <h2>First Step (<u>Basic IT Skills</u>)</h2>
+                <ul>
+                    <li>Networking</li>
+                    <li>Linux</li>
+                    <li>Web Technologies</li>
+                </ul>
+            </div>
+            <div class="stage">
+                <h2>Second Step (<u>Programming</u>)</h2>
+                <ul>
+                    <li>Python</li>
+                    <li>JavaScript</li>
+                    <li>Bash Scripting</li>
+                </ul>
+            </div>
+            <div class="stage">
+                <h2>Third Step (<u>Security Fundamentals</u>)</h2>
+                <ul>
+                    <li>Understanding of Common Threats</li>
+                    <li>Security Tools</li>
+                    <li>Basic Cryptography</li>
+                </ul>
+            </div>
+			<div class="stage">
+                <h2>Fourth Step (<u>Blue Teaming Essentials</u>)</h2>
+                <ul>
+                    <li>Incident Response</a></li>
+                    <li>Log Analysis</a></li>
+                    <li>Threat Hunting</a></li>
+                </ul>
+            </div>
+            <div class="stage">
+                <h2>Fifth Step (<u>Advanced Blue Teaming</u>)</h2>
+                <ul>
+                    <li>SIEM (Security Information and Event Management)</a></li>
+                    <li>Malware Analysis</a></li>
+                    <li>Network Defense</a></li>
+                </ul>
+            </div>
+            <div class="stage">
+                <h2>Sixth Step (<u>Specializations</u>)</h2>
+                <ul>
+                    <li>Cloud Security</a></li>
+                    <li>IoT Security</a></li>
+                    <li>Digital Forensics</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+{% endblock %}

@@ -255,3 +255,10 @@ def FeedBack(request):
 
 def ChatBot(request):
     return render (request, "chatbot.html")
+
+def RoadMap_pentesting(request):
+    return render(request, "roadmap-pentest.html")
+def RoadMap_blue_teaming(request):
+    return render(request, "roadmap-blue.html")
+def RoadMap_red_teaming(request):
+    return render(request, "roadmap-red.html")

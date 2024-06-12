@@ -667,11 +667,10 @@ pre code {
 
 .container {
     width: 100%;
-    padding-right: 15px;
-    padding-left: 15px;
-    margin-right: auto;
-    margin-left: auto
+    max-width: 100%;
+    padding: 0 15px;
 }
+
 
 @media (min-width:576px) {
     .container {
@@ -706,9 +705,9 @@ pre code {
 }
 
 .row {
-    display: -ms-flexbox;
+    /* display: -ms-flexbox; */
     display: flex;
-    -ms-flex-wrap: wrap;
+    /* -ms-flex-wrap: wrap; */
     flex-wrap: wrap;
     margin-right: -15px;
     margin-left: -15px

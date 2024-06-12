@@ -2,6 +2,21 @@
 {% load static %}
 {% block title %}SignUp{% endblock %}
 {% block body%}
+<script>
+function validateSignUpForm() {
+    let p1= document.forms["singup_form"]["password1"].value;
+    let p2 = document.forms["singup_form"]["password2"].value;
+    if (p1 != p2) {
+        p2.setCustomValidity("Passwords don't match");
+        p2.reportValidity();
+        return false;
+    } else {
+        p2.setCustomValidity('');
+        return true
+}
+
+
+}</script>
 <div class="breadcrumbs overlay">
 	<div class="container">
 		<div class="bread-inner">
@@ -39,27 +54,27 @@
     <div class="col-lg-6 col-md-12 order-md-1 order-2">
         <div class="section-wrapper">
             <div class="row">
-				<form class="form" method="post">
+				<form name ="singup_form" class="form" method="post" onsubmit="return validateSignUpForm()">
 						{% csrf_token %}
 							<div class="row">
 								<div class="col-lg-6 col-md-6 col-12">
 									<div class="form-group">
-										<input name="first_name" type="text" placeholder="First Name">
+										<input name="first_name" type="text" placeholder="First Name" required>
 									</div>
 								</div>
 								<div class="col-lg-6 col-md-6 col-12">
 									<div class="form-group">
-										<input name="last_name" type="text" placeholder="Last Name">
+										<input name="last_name" type="text" placeholder="Last Name" required>
 									</div>
 								</div>
 								<div class="col-lg-6 col-md-6 col-12">
 									<div class="form-group">
-										<input name="email" type="email" placeholder="Email">
+										<input name="email" type="email" placeholder="Email" required>
 										</div>
 								</div>
 								<div class="col-lg-6 col-md-6 col-12">
 									<div class="form-group">
-										<input name="username" type="text" placeholder="Username">
+										<input name="username" type="text" placeholder="Username" min = "4" required>
 										</div>
 										</div>
 										<div class="col-lg-6 col-md-6 col-12">
@@ -69,12 +84,12 @@
 												</div>
 									<div class="col-lg-6 col-md-6 col-12">
 									<div class="form-group">
-										<input name="password1" type="password" placeholder="Password">
+										<input name="password1" type="password" placeholder="Password" required>
 										</div>
 									</div>
 									<div class="col-lg-6 col-md-6 col-12">
 									<div class="form-group">
-										<input name="password2" type="password" placeholder="Confirm Password">
+										<input name="password2" type="password" placeholder="Confirm Password" required >
 									</div>
 									</div>
 									<!-- <div class="col-lg-6 col-md-6 col-12">
@@ -103,7 +118,7 @@
 							<div class="form-group">
 							<div class="button-group">
                 <!-- <button type="reset" class="btn">Reset</button> -->
-				<button type="submit" class="btn">Sign Up</button>
+				&nbsp;<button type="submit" class="btn">Sign Up</button>
             </div>
         </div>
     </div>

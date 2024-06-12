@@ -48,6 +48,14 @@ Version:	1.1
 /*=============================
 	Global CSS 
 ===============================*/
+html , body {
+	overflow-x: hidden;
+}
+* {
+	margin :0;
+	padding: 0;
+	box-sizing: border-box;
+}
 body{
     font-family: 'Poppins', sans-serif;
 	font-weight: 400;
@@ -244,6 +252,10 @@ body{
 .header{
 	background-color:#fff;
 	position:relative;
+	width: 100%;
+	max-width: 100%;
+	padding: 0 15px;
+	overflow: hidden;
 }
 .header .navbar-collapse{
 	padding:0;
@@ -299,6 +311,7 @@ body{
 	background:#fff;
 	z-index:999;
 	width:100%;
+	overflow: hidden;
 }
 .get-quote{
 	margin-top:12px;
@@ -1461,7 +1474,7 @@ body{
 	border-radius: 3px;
 	margin: 0 0 0 -52px;
 	margin-top: 49px;
-	/* box-sizing: ; */
+	box-sizing: border-box ;
 }
 .testimonials .owl-dots .owl-dot {
 	display: inline-block;
@@ -4304,6 +4317,7 @@ body{
 
 
 .nav.menu li {
-    display: inline-block;
-    margin-right: 10px; /* تحديد المسافة بين العناصر إذا كانت مطلوبة */
+    /* display: inline-block;  */
+    /* margin-right: 10px; تحديد المسافة بين العناصر إذا كانت مطلوبة */
+	padding : 0 10px;
 }
