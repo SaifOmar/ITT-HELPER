@@ -1,29 +1,83 @@
 {% extends 'base.html' %}
 {% load static %}
-
-
-{% block body %}
-{%  for course in courses %}
-<div id = "course-{{course.id}}">
-
-    <h4>{{course.CourseName}}</h4>
-    <ul>
-        {% for path in course.Path.all %}
-        <li>
-            {{path}}
-        </li>
-        {% endfor %}
-        {% for event in course.RelatedEvents.all %}
-        <li>{{event}}</li>
-        {% endfor %}
-    </ul>
-    <button 
-    hx-delete="courses/delete/{{course.id}}" 
-    hx-target="#course-{{course.id}}"
-    hx-swap="outerHTML"
-    type="button"
-
-    >Delete</button>
-    {% endfor %}
-</div>
-{% endblock%}
+{% block title %}Courses{% endblock %}
+{% block body%}	
+		<!-- End Header Area -->
+		
+		<!-- Pricing Table -->
+		<!-- Start Blog Area -->
+		<section class="blog section" id="blog" style="background: #f9f9f9;">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="section-title">
+							<h2>Providing a range of courses</h2>
+							<img src="{% static 'img/logo2.png' %}" alt="#">
+							<p>The best suggestions of courses saves you effort and time.</p>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-4 col-md-6 col-12">
+						<!-- Single Blog -->
+						<div class="single-news">
+							<div class="news-head">
+								<img src="{% static 'img/blog1.png' %}" alt="#">
+							</div>
+							<div class="news-body">
+								<div class="news-content">
+								<style>
+								.date a{
+								text-decoration: none; /* إزالة تأثير الرابط */
+								}
+								.date a:hover {
+								background:#0C4257;
+								color:#000000;
+								}
+								</style>
+									<div class="date"><a href="https://youtube.com/playlist?list=PLped9VG7STA-SnQv4X9lauBZGH4rW8ICF&si=dFLTXLDR8wK0vh7i">Start Course</a></div>
+									<h2>CCNA (Cisco Certified Network Associate)</a></h2>
+									<p class="text">Eng. Abeer Hosny</p>
+								</div>
+							</div>
+						</div>
+						<!-- End Single Blog -->
+					</div>
+					<div class="col-lg-4 col-md-6 col-12">
+						<!-- Single Blog -->
+						<div class="single-news">
+							<div class="news-head">
+								<img src="{% static 'img/blog2.png' %}" alt="#">
+							</div>
+							<div class="news-body">
+								<div class="news-content">
+									<div class="date"><a href="https://youtube.com/playlist?list=PL77yNtB4-Ljkv_urGap0RoLeRHQVVCWMt&si=SD0DfV-Bnd0MA31-">Start Course</a></div>
+									<h2>MCSA (Microsoft Certified Solutions Associate)</a></h2>
+									<p class="text">Eng. Ahmed Nazmy</p>
+								</div>
+							</div>
+						</div>
+						<!-- End Single Blog -->
+					</div>
+					<div class="col-lg-4 col-md-6 col-12">
+						<!-- Single Blog -->
+						<div class="single-news">
+							<div class="news-head">
+								<img src="{% static 'img/blog3.png' %}" alt="#">
+							</div>
+							<div class="news-body">
+								<div class="news-content">
+									<div class="date"><a href="https://youtube.com/playlist?list=PLLlr6jKKdyK3ZtVskQEAkiHZjcGCrkJOR&si=qzP2a_08TUUSPCva">Start Course</a></div>
+									<h2>CCNP (Cisco Certified Network Professional)</a></h2>
+									<p class="text">Eng. Abeer Hosny</p>
+								</div>
+							</div>
+						</div>
+						<!-- End Single Blog -->
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- End Blog Area -->
+		 {% endblock %}
+		

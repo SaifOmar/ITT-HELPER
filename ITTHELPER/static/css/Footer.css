@@ -1,0 +1,61 @@
+.text-white-50 {
+  color: rgba(255, 255, 255, 0.5) !important;
+}
+
+  .pr-lg-5,
+  .px-lg-5 {
+    padding-right: 3rem !important;
+  }
+  
+  .pl-lg-5,
+  .px-lg-5 {
+    padding-left: 3rem !important;
+  }
+  
+    .pr-sm-3,
+  .px-sm-3 {
+    padding-right: 1rem !important;
+  }
+  
+  .pt-5,
+.py-5 {
+  padding-top: 3rem !important;
+}
+
+.pt-5,
+.py-5 {
+  padding-bottom: 3rem !important;
+}
+
+.bg-dark {
+  background-color: #212121 !important;
+}
+
+.container,
+.container-fluid,
+.container-sm,
+.container-md,
+.container-lg,
+.container-xl {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+div {
+	display: block;
+	unicode-bidi: isolate;
+}
+
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #656565;
+  text-align: left;
+  background-color: #F3F3F3;
+}

@@ -1,10 +1,59 @@
 {% extends 'base.html' %}
 {% load static %}
-
-{% block title %}
-CV Guide
-{% endblock %}
-
-{% block body %}
- <h1>smth goes here</h1>
-{% endblock %}
+{% block title %}CV Tips{% endblock %}
+{% block body%}	
+		<!-- Start Portfolio Details Area -->
+		<section class="pf-details section" style="background: #f9f9f9;">
+			<div class="container">
+				<div class="row">
+					<div class="col-12">
+						<div class="inner-content">
+							<div class="image-slider">
+								<div class="pf-details-slider">
+									<img src="{% static 'img/call-bg.png' %}" alt="#">
+									<img src="{% static 'img/call-bg.png' %}" alt="#">
+									<img src="{% static 'img/call-bg.png' %}" alt="#">
+								</div>
+							</div>
+							<div class="date">
+								<ul>
+									<li><span>Category :</span> Heart Surgery</li>
+									<li><span>Date :</span> April 20, 2019</li>
+									<li><span>Client :</span> Suke Agency</li>
+									<li><span>Ags :</span> Typo</li>
+								</ul>
+							</div>
+							<div class="body-text">
+								<h2><i>There are some guides for making your CV</i></h2>
+								<p><b><big>1- <u>Clear Formatting:</u></b> Use a clean and professional layout. Choose a readable font and maintain consistency in formatting throughout the document.</big></p>
+								<p><b><big>2- <u>Contact Information:</u></b> Include your full name, phone number, email address, and optionally, your LinkedIn profile or personal website at the top of the CV.</big></p>
+								<p><b><big>3- <u>Personal Statement or Summary:</u></b> Write a brief overview of your skills, experiences, and career goals. This section should grab the reader's attention and highlight what makes you a strong candidate.</big></p>
+								<p><b><big>4- <u>Work Experience:</u></b> List your work history in reverse chronological order, starting with your most recent job. Include the company name, your job title, and the dates you worked there. Use bullet points to describe your responsibilities and accomplishments in each role.</big></p>
+								<p><b><big>5- <u>Education:</u></b> Include your educational background, starting with your most recent degree. List the institution's name, degree earned, and graduation year. You can also include relevant coursework, academic honors, or extracurricular activities.</big></p>
+								<p><b><big>6- <u>Skills:</u></b> Highlight your key skills and competencies relevant to the position you're applying for. This can include technical skills, languages, software proficiency, and soft skills such as communication and teamwork.</big></p>
+								<p><b><big>7- <u>Achievements:</u></b> Showcase any notable achievements or awards you've received in your career, such as certifications, publications, or recognition from previous employers.</big></p>
+								<p><b><big>8- <u>Tailor to the Job:</u></b> Customize your CV for each job application by emphasizing the skills and experiences that are most relevant to the position. Review the job description carefully and align your CV accordingly.</big></p>
+								<p><b><big>9- <u>Quantify Results:</u></b> Whenever possible, quantify your achievements with numbers or percentages to demonstrate your impact. For example, "Increased sales revenue by 20% in Q3" or "Managed a team of 10 employees."</big></p>
+								<p><b><big>10- <u>Proofread:</u></b> Take the time to proofread your CV carefully to catch any spelling or grammatical errors. It's also helpful to have someone else review it for feedback.</big></p>
+								<p><b><big>11- <u>Keep it Concise:</u></b> Aim for a CV length of one to two pages, depending on your level of experience. Focus on including relevant information and avoid unnecessary details.</big></p>
+								<p><b><big>12- <u>Submit your resume:</u> </b>as a word document or PDF.</big></p>
+								<p><b><big>13- <u>Include relevant resume keywords:</u> </b>from the job description in your work experience, skills, and professional summary section.</big></p>
+								<p><b><big>14- <u>Update Regularly:</u> </b>Keep your CV up to date with your latest experiences, skills, and achievements. Regularly review and revise it as your career progresses.</big></p>
+								
+								<div class="share">
+									<h4>Share Now -</h4>
+									<ul>
+										<li><a href="https://www.facebook.com/profile.php?id=100090024653201&mibextid=ZbWKwL"><i class="fa fa-facebook-official" aria-hidden="true"></i></a></li>
+										<li><a href="https://wa.me/qr/2US7ZRHCKJVCL1"><i class="fa fa-whatsapp" aria-hidden="true"></i></a></li>
+										<li><a href="https://www.linkedin.com/company/nsp-community/"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- End Portfolio Details Area -->
+   
+ {% endblock %}

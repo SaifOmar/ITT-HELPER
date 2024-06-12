@@ -1,49 +1,90 @@
+{% load static %}
 <!-- Footer Start -->
-    <footer>
+    <div class="container-fluid bg-dark text-white-50 py-5 px-sm-3 px-lg-5" style="margin-top: 0px;">
+        <div class="row pt-5">
+            <div class="col-lg-3 col-md-6 mb-5" style= "margin-right: 80px;">
+                <a href="" class="navbar-brand">
+                    <h1 class="text-primary"><span class="text-white"><big>ITTT</big></span><big>Helper</big></h1>
+                </a>
+                <p>You can contact us at any time to answer your inquiries and to provide the best services.</p>
+                <h6 class="text-white text-uppercase mt-4 mb-3" style="letter-spacing: 5px;">Follow Us</h6>
+                <div class="d-flex justify-content-start">
+				<a class="btn btn-outline-primary btn-square mr-2" href="https://www.facebook.com/profile.php?id=100090024653201&mibextid=ZbWKwL"><i class="fa fa-facebook-official" aria-hidden="true"></i></a>
+				<a class="btn btn-outline-primary btn-square mr-2" href="https://www.linkedin.com/company/nsp-community/"><i class="fa fa-linkedin" aria-hidden="true" color= "white"></i></a>
+				<a class="btn btn-outline-primary btn-square mr-2" href="https://wa.me/qr/2US7ZRHCKJVCL1"><i class="fa fa-whatsapp" aria-hidden="true"></i></a>
+				</div>
 
-            <div class="container-fluid bg-dark text-white-50 py-5 px-sm-3 px-lg-5" style="margin-top: 90px;">
-                <div class="row pt-5">
-                  <div class="col-lg-3 col-md-6 mb-5">
-                       <a href="" class="navbar-brand">
-                         <h1 class="text-primary"><span class="text-white">ITT</span>Helper</h1>
-                        </a>
-                       <p>You can contact us at any time to answer your inquiries and to provide the best services.</p>
-                      <h6 class="text-white text-uppercase mt-4 mb-3" style="letter-spacing: 5px;">Follow Us</h6>
-                      <div class="d-flex justify-content-start">
-                            <a class="btn btn-outline-primary btn-square mr-2" href="https://www.facebook.com/profile.php?id=100090024653201&mibextid=ZbWKwL"><i class="fab fa-facebook-f"></i></a>
-                           <a class="btn btn-outline-primary btn-square mr-2" href="https://www.linkedin.com/company/nsp-community/"><i class="fab fa-linkedin-in"></i></a>
-                           <a class="btn btn-outline-primary btn-square mr-2" href="https://wa.me/qr/2US7ZRHCKJVCL1"><i class="fab fa-whatsapp"></i></a>
-                        </div>
-                    
-                    </div>
-             <div class="col-lg-3 col-md-6 mb-5">
-                 <h5 class="text-white text-uppercase mb-4" style="letter-spacing: 5px;">Our Services</h5>
-                    <div class="d-flex flex-column justify-content-start">
-                        <a class="text-white-50 mb-2" href="{% url 'courses' %}"><i class="fa fa-angle-right mr-2"></i>Courses</a>                   
-                        <a class="text-white-50 mb-2" href="{% url 'training' %}"><i class="fa fa-angle-right mr-2"></i>Training</a>
-                        <a class="text-white-50 mb-2" href="{% url 'path' %}" ><i class="fa fa-angle-right mr-2"></i>Career Path</a>
-					    <a class="text-white-50 mb-2" href="{% url 'employment' %}" ><i class="fa fa-angle-right mr-2"></i>Employment Market</a>
-                    
-                    </div>
+
+
+            </div>
+            <div class="col-lg-3 col-md-6 mb-5" style= "margin-right: 60px;">
+                <h5 class="text-white text-uppercase mb-4" style="letter-spacing: 5px;">Our Services</h5>
+                <div class="d-flex flex-column justify-content-start">
+                    <a class="text-white-50 mb-2" href="{% url 'courses' %}"><i class="fa fa-angle-right mr-2"></i>Courses</a>                   
+                    <a class="text-white-50 mb-2" href="{% url 'training' %}"><i class="fa fa-angle-right mr-2"></i>Training</a>
+                    <a class="text-white-50 mb-2" href="{% url 'path' %}"><i class="fa fa-angle-right mr-2"></i>Career Path</a>
+					<a class="text-white-50 mb-2" href="{% url 'chatbot' %}" target="_blank"><i class="fa fa-angle-right mr-2"></i>Chatbot</a>
+                  
                 </div>
-                <div class="col-lg-3 col-md-6 mb-5">
-                    <h5 class="text-white text-uppercase mb-4" style="letter-spacing: 5px;">Usefull Links</h5>
-                    <div class="d-flex flex-column justify-content-start">
-                        <a class="text-white-50 mb-2" href="{% url 'events' %}" > <i class="fa fa-angle-right mr-2"></i>Events & Workshops</a>
-					    <a class="text-white-50 mb-2" href="{% url 'guides' %}" ><i class="fa fa-angle-right mr-2"></i>Guides for Interviews</a>
-                        <a class="text-white-50 mb-2" href="{% url 'cv' %}"><i class="fa fa-angle-right mr-2"></i>Tips for CVs</a>
-                    
+            </div>
+            <div class="col-lg-3 col-md-6 mb-5" style= "margin-right: 60px;">
+                <h5 class="text-white text-uppercase mb-4" style="letter-spacing: 5px;">Usefull Links</h5>
+                <div class="d-flex flex-column justify-content-start">
+                    <a class="text-white-50 mb-2" href="{% url 'events'%}"><i class="fa fa-angle-right mr-2"></i>Events & Workshops</a>
+					<a class="text-white-50 mb-2" href="{% url 'guides' %}"><i class="fa fa-angle-right mr-2"></i>Guides for Interviews</a>
+                    <a class="text-white-50 mb-2" href="{% url 'cv' %}"><i class="fa fa-angle-right mr-2"></i>Tips for CVs</a>
+					<a class="text-white-50 mb-2" href="{% url 'feedback' %}"><i class="fa fa-angle-right mr-2"></i>Feedback</a>					
                 </div>
-                    </div>
-                <div class="col-lg-3 col-md-6 mb-5">
-                    <h5 class="text-white text-uppercase mb-4" style="letter-spacing: 5px;">Contact Us</h5>
-                 <p><i class="fa fa-map-marker-alt mr-2"></i>Shibin-Elkom</p>
-                    <p><i class="fa fa-phone-alt mr-2"></i>+01021572715</p>
-                    <p><i class="fa fa-envelope mr-2"></i>nspcommunity865@gmail.com</p>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-5">
+                <h5 class="text-white text-uppercase mb-4" style="letter-spacing: 5px;">Contact Us</h5>
+                <p><i class="fa fa-map-marker mr-2" style="margin-bottom: 12px;"></i> Shibin-Elkom</p>
+                <p><i class="fa fa-phone mr-2" style="margin-bottom: 12px;"></i>+01021572715</p>
+                <p><i class="fa fa-envelope mr-2"></i><a href="mailto:support@yourmail.com">nspcommunity865@gmail.com</p>
                 
-                </div>
             </div>
         </div>
     </div>
-
-</footer>
+    </div>
+   
+    <!-- Footer End -->
+     <!-- jquery Min JS -->
+        <script src="{% static 'js/jquery.min.js' %}"></script>
+		<!-- jquery Migrate JS -->
+		<script src="{% static 'js/jquery-migrate-3.0.0.js' %}"></script>
+		<!-- jquery Ui JS -->
+		<script src="{% static 'js/jquery-ui.min.js' %}"></script>  
+		<!-- Easing JS -->
+        <script src="{% static 'js/easing.js' %}"></script>
+		<!-- Color JS -->
+		<script src="{% static 'js/colors.js' %}"></script>
+		<!-- Popper JS -->
+		<script src="{% static 'js/popper.min.js'%}"></script>
+		<!-- Bootstrap Datepicker JS -->
+		<script src="{% static 'js/bootstrap-datepicker.js '%}"></script>
+		<!-- Jquery Nav JS -->
+        <script src="{% static 'js/jquery.nav.js' %}"></script>
+		<!-- Slicknav JS -->
+		<script src="{% static 'js/slicknav.min.js' %}"></script>
+		<!-- ScrollUp JS -->
+        <script src="{% static 'js/jquery.scrollUp.min.js' %}"></script>
+		<!-- Niceselect JS -->
+		<script src="{% static 'js/niceselect.js' %}"></script>
+		<!-- Tilt Jquery JS -->
+		<script src="{% static 'js/tilt.jquery.min.js' %}"></script>
+		<!-- Owl Carousel JS -->
+        <script src="{% static 'js/owl-carousel.js' %}"></script>
+		<!-- counterup JS -->
+		<script src="{% static 'js/jquery.counterup.min.js' %}"></script>
+		<!-- Steller JS -->
+		<script src="{% static 'js/steller.js' %}"></script>
+		<!-- Wow JS -->
+		<script src="{% static 'js/wow.min.js' %}"></script>
+		<!-- Magnific Popup JS -->
+		<script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
+		<!-- Counter Up CDN JS -->
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js"></script>
+		<!-- Bootstrap JS -->
+		<script src="{% static 'js/bootstrap.min.js' %}"></script>
+		<!-- Main JS -->
+		<script src="{% static 'js/main.js' %}"></script>

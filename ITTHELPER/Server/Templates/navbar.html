@@ -1,70 +1,79 @@
-<!-- Topbar Start -->
-    <div class="container-fluid bg-light pt-3 d-none d-lg-block">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-6 text-center text-lg-left mb-2 mb-lg-0">
-            <div class="d-inline-flex align-items-center">
-              <p>
-                <i class="fa fa-envelope mr-2"></i>nspcommunity865@gmail.com
-              </p>
-              <p class="text-body px-3">|</p>
-              <p><i class="fa fa-phone-alt mr-2"></i>+201021572715</p>
-            </div>
-          </div>
-          <div class="col-lg-6 text-center text-lg-right">
-            <div class="d-inline-flex align-items-center">
-              <a
-                class="text-primary px-3"
-                href="https://www.facebook.com/profile.php?id=100090024653201&mibextid=ZbWKwL"
-              >
-                <i class="fab fa-facebook-f"></i>
-              </a>
-              <a
-                class="text-primary px-3"
-                href="https://www.linkedin.com/company/nsp-community/"
-              >
-                <i class="fab fa-linkedin-in"></i>
-              </a>
-              <a
-                class="text-primary px-3"
-                href="https://wa.me/qr/2US7ZRHCKJVCL1"
-              >
-                <i class="fab fa-whatsapp"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- Topbar End -->
+{% load static %}
+<!-- Preloader -->
+        <div class="preloader">
+            <div class="loader">
+                <div class="loader-outter"></div>
+                <div class="loader-inner"></div>
 
-<!-- Navbar Start -->
-<nav>
-
-    <div class="container-fluid position-relative nav-bar p-0">
-            <div class="container-lg position-relative p-0 px-lg-3" style="z-index: 9;">
-                <nav class="navbar navbar-expand-lg bg-light navbar-light shadow-lg py-3 py-lg-0 pl-3 pl-lg-5">
-                    <a href="" class="navbar-brand">
-                        <h1 class="m-0 text-primary"><span class="text-dark">ITT</span>Helper</h1>
-                    </a>
-                    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse justify-content-between px-3" id="navbarCollapse">
-                        <div class="navbar-nav ml-auto py-0">
-                            <a href="{% url 'home' %}" class="nav-item nav-link">Home</a>
-                            <a href="{% url 'courses' %}" class="nav-item nav-link">Courses</a>
-                            <a href="{% url 'training' %}" class="nav-item nav-link">Training</a>
-                            <a href="{% url 'path' %}" class="nav-item nav-link">Career Path</a>
-                            <a href="{% url 'employment' %}" class="nav-item nav-link">Employment Market</a>
-                            <a href="{% url 'events' %}" class="nav-item nav-link">Events & Workshops</a>
-                            <a href="{% url 'cv' %}" class="nav-item nav-link">CVs Tips</a>
-                            <a href="{% url 'guides' %}" class="nav-item nav-link">Guides for Interviews</a>
-                     </div>
-                    </div>
+                <div class="indicator"> 
+                    <svg width="16px" height="12px">
+                        <polyline id="back" points="1 6 4 6 6 11 10 1 12 6 15 6"></polyline>
+                        <polyline id="front" points="1 6 4 6 6 11 10 1 12 6 15 6"></polyline>
+                    </svg>
                 </div>
-            </nav>
-        </div>
-    </div>
-</nav>
-<!-- Navbar End -->
+            </div>
+        </div> 
+        <!--  End Preloader  -->
+		
+		<!-- Get Pro Button -->
+		<ul class="pro-features">
+			<a class="get-pro">Get Pro</a>
+			<li class="title"><big>Pro Version Features</big></li>
+			<li>12-month diploma for 6000LE</li>
+			<li>9-month diploma for 9000LE</li>
+			<li>6-month diploma for 12000LE</li>
+			<li>3-month diploma for 15000LE</li>
+			<div class="button">
+				<a href="{% url 'chatbot' %}" target="_blank" class="btn">Learn More</a>
+				<a href="#" target="_blank" class="btn">Reserve The Diploma</a>
+			</div>
+		</ul>
+<!-- Header Area -->
+		<header class="header" >
+			<!-- Header Inner -->
+			<div class="header-inner">
+				<div class="container">
+					<div class="inner">
+						<div class="row">
+							<div class="col-lg-3 col-md-3 col-12">
+								<!-- Start logo2 -->
+								<div class="logo2">
+									<a href="{% url 'home' %}"><img src="{% static 'img/logo2.png' %}" alt="logo"></a>
+								</div>
+								<!-- End logo2 -->
+								<!-- Mobile Nav -->
+								<div class="mobile-nav"></div>
+								<!-- End Mobile Nav -->
+							</div>
+							<div class="col-lg-7 col-md-9 col-12">
+								<!-- Main Menu -->
+								<div class="main-menu">
+									<nav class="navigation">
+										<ul class="nav menu">
+											<li><a href="{% url 'home' %}">Home </a></li>
+											<li><a href="{% url 'courses' %}">Courses </a></li>
+											<li><a href="{% url 'training' %}">Training </a></li>
+											<li><a href="{% url 'path' %}">Career Path </a></li>
+											<li><a href="{% url 'events' %}">Events & Workshops </a></li>
+											<li><a href="{% url 'cv' %}">CV Tips </a></li>
+											<li><a href="{% url 'guides' %}">Guides for Interviews </a></li>
+											<li><a href="{% url 'contact_us'%}">Contact Us</a></li>
+											<li><a href="{% url 'feedback' %}">Feedback </a></li>
+											<li><a href="{% url 'chatbot' %}" target="_blank">Chatbot </a></li>
+										</ul>
+									</nav>
+								</div>
+								<!--/ End Main Menu -->
+							</div>
+							<div class="col-lg-2 col-12">
+								<div class="get-quote">
+									<a href="{% url 'signup' %}" class="btn">Get Started</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--/ End Header Inner -->
+		</header>
+		<!-- End Header Area -->

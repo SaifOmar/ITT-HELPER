@@ -1,10 +1,54 @@
 {% extends 'base.html' %}
 {% load static %}
-
-{% block title %}
-Guides
-{% endblock %}
-
-{% block body %}
- <h1>smth goes here</h1>
-{% endblock %}
+{% block title %}Guides{% endblock %}
+{% block body%}	
+		<!-- Start Portfolio Details Area -->
+		<section class="pf-details section" style="background: #f9f9f9;">
+			<div class="container">
+				<div class="row">
+					<div class="col-12">
+						<div class="inner-content">
+							<div class="image-slider">
+								<div class="pf-details-slider">
+									<img src="{% static 'img/call-bg.png' %}" alt="#">
+									<img src="{% static 'img/call-bg.png' %}" alt="#">
+									<img src="{% static 'img/call-bg.png' %}" alt="#">
+								</div>
+							</div>
+							<div class="date">
+								<ul>
+									<li><span>Category :</span> Heart Surgery</li>
+									<li><span>Date :</span> April 20, 2019</li>
+									<li><span>Client :</span> Suke Agency</li>
+									<li><span>Ags :</span> Typo</li>
+								</ul>
+							</div>
+							<div class="body-text">
+								<h2><i>There are some guides for Interviews</i></h2>
+								<p><b><big>1- <u>Research the Company:</u></b> Learn as much as you can about the company, its mission, values, culture, products/services, recent news, and any notable achievements. This will demonstrate your interest and enthusiasm for the role.</big></p>
+								<p><b><big>2- <u>Understand the Job Description:</u></b> Analyze the job description carefully to understand the key requirements, responsibilities, and qualifications. Prepare examples from your experience that demonstrate how you meet these criteria.</big></p>
+								<p><b><big>3- <u>Practice Common Interview Questions:</u></b> Be ready to answer common interview questions such as "Tell me about yourself," "Why are you interested in this position/company," and "What are your strengths and weaknesses." Practice your responses to these questions to articulate your thoughts clearly and confidently.</big></p>
+								<p><b><big>4- <u>Prepare STAR Stories:</u></b> Use the STAR method (Situation, Task, Action, Result) to structure your responses to behavioral interview questions. Prepare specific examples from your past experiences that highlight your skills, problem-solving abilities, and accomplishments.</big></p>
+								<p><b><big>5- <u>Know Your Resume:</u></b> Be prepared to discuss your resume in detail, including your work experience, education, skills, and achievements. Be ready to explain any gaps in employment or transitions between roles.</big></p>
+								<p><b><big>6- <u>Practice Non-Verbal Communication:</u></b> Pay attention to your body language, tone of voice, and facial expressions during the interview. Practice good posture, maintain eye contact, and use confident gestures to convey professionalism and engagement.</big></p>
+								<p><b><big>7- <u>Ask Questions:</u></b> Prepare insightful questions to ask the interviewer about the company, team dynamics, projects, opportunities for growth, or any other relevant topics. This shows your interest in the role and helps you gather important information to assess if the company is the right fit for you.</big></p>
+								<p><b><big>8- <u>Dress Appropriately:</u></b> Choose professional attire that is suitable for the company culture and industry. Dressing appropriately demonstrates respect for the interview process and reflects your professionalism.</big></p>
+								<p><b><big>9- <u>Arrive Early:</u></b> Plan to arrive at the interview location early to allow time for unexpected delays. Punctuality shows respect for the interviewer's time and helps you start the interview on a positive note.</big></p>
+								<p><b><big>10- <u>Follow-Up:</u></b> Send a thank-you email or note to the interviewer within 24 hours of the interview to express your appreciation for the opportunity and reiterate your interest in the position. This is also an opportunity to address any points you may have forgotten to mention during the interview.</big></p>
+								
+								<div class="share">
+									<h4>Share Now -</h4>
+									<ul>
+										<li><a href="https://www.facebook.com/profile.php?id=100090024653201&mibextid=ZbWKwL"><i class="fa fa-facebook-official" aria-hidden="true"></i></a></li>
+										<li><a href="https://wa.me/qr/2US7ZRHCKJVCL1"><i class="fa fa-whatsapp" aria-hidden="true"></i></a></li>
+										<li><a href="https://www.linkedin.com/company/nsp-community/"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- End Portfolio Details Area -->	
+      {% endblock %}

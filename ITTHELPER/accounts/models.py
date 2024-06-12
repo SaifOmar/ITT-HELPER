@@ -5,6 +5,7 @@ from .managers import MyUserManager
 class CustomUser(AbstractUser):
     phone_number = models.CharField(max_length=15,default=None,unique=True)
     objects = MyUserManager()
+    email_is_verified = models.BooleanField(default=False)
 
     REQUIRED_FIELDS = ["email","phone_number"]
 

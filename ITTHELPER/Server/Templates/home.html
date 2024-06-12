@@ -1,113 +1,352 @@
 {% extends 'base.html' %}
 {% load static %}
+{% block body%}
+		<!-- Slider Area -->
+		<section class="slider">
+			<div class="hero-slider">
+				<!-- Start Single Slider -->
+				<div class="single-slider" style="background-image: url('{% static 'img/slider.png' %}');">
+					<div class="container">
+						<div class="row">
+							<div class="col-lg-7">
+								<div class="text">
+									<h1>We help you to start your <span>Career In Cyber-Security</span></h1>
+									<p><b>ITTT Helper helps others start their careers by providing guidance, support and resources to empower them on their career journey. </b></p>
+									<div class="button">
+										<a href="{% url 'chatbot' %}" target="_blank" class="btn">Learn More</a>
+										<a href="{% url 'contact_us' %}" class="btn primary">Contact Us</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- End Single Slider -->
+				<!-- Start Single Slider -->
+				<div class="single-slider" style="background-image: url('{% static 'img/slider2.png' %}');">
+					<div class="container">
+						<div class="row">
+							<div class="col-lg-7">
+								<div class="text">
+									<h1>We help you to start your <span>Career In Cyber-Security</span></h1>
+									<p><b>ITTT Helper helps others start their careers by providing guidance, support and resources to empower them on their career journey. </b></p>
+									<div class="button">
+										<a href="{% url 'chatbot' %}" target="_blank" class="btn">Learn More</a>
+										<a href="{% url 'contact_us' %}" class="btn primary">Contact Us</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- Start End Slider -->
+				<!-- Start Single Slider -->
+				
+				<!-- End Single Slider -->
+			</div>
+		</section>
+		<!--/ End Slider Area -->
+		
+		<!-- Start Schedule Area -->
+		<section class="schedule">
+			<div class="container">
+				<div class="schedule-inner">
+					<div class="row">
+						<div class="col-lg-4 col-md-6 col-12 ">
+							<!-- single-schedule -->
+							<div class="single-schedule first">
+								<div class="inner">
+									<div class="icon">
+										<i class="icofont-education"></i>
+									</div>
+									<div class="single-content">
+										<h4>penetration Testing</h4>
+										<p>A security exercise where a cyber-security expert attempts to find vulnerabilities which attackers could take advantage of in a computer system.</p>
+										<a href="{% url 'chatbot' %}" target="_blank">LEARN MORE<i class="fa fa-long-arrow-right"></i></a>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-4 col-md-6 col-12">
+							<!-- single-schedule -->
+							<div class="single-schedule middle">
+								<div class="inner">
+									<div class="icon">
+										<i class="icofont-education"></i>
+									</div>
+									<div class="single-content">
+										<h4>Red Teaming</h4>
+										<p>Occurs when ethical hackers are authorized by your organization to emulate real attackers (TTPs) against your own systems.</p>
+										<a href="{% url 'chatbot' %}" target="_blank">LEARN MORE<i class="fa fa-long-arrow-right"></i></a>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-4 col-md-12 col-12">
+							<!-- single-schedule -->
+							<div class="single-schedule last">
+								<div class="inner">
+									<div class="icon">
+										<i class="icofont-education"></i>
+									</div>
+									<div class="single-content">
+										<h4>Blue Teaming</h4>
+										<p>Your organization's cybersecurity team is the primary defense against various threats, including phishing attacks and suspicious activity.</p>
+										<a href="{% url 'chatbot' %}" target="_blank">LEARN MORE<i class="fa fa-long-arrow-right"></i></a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!--/End Start schedule Area -->
 
-{% block title %}
-    ITT Helper
-{% endblock %}
-    
-{% block body %}
-        <!-- Carousel Start -->
-        <div class="container-fluid p-0">
-            <div id="header-carousel" class="carousel slide" data-ride="carousel">
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <img class="w-100" src="{% static 'images/carousel-3.jpg' %}" alt="Image">
-                        <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
-                            <div class="p-3" style="max-width: 900px;">
-                                <h2 class="text-white text-uppercase mb-md-3">ITT Helper</h2>
-                                <h1 class="display-3 text-white mb-md-4">Let's Discover Your Career Together</h1>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Carousel End -->
+		<!-- Start Feautes -->
+		<section class="Feautes section">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="section-title">
+							<h2>One effective approach is Mentorship</h2>
+							<img src="{% static 'img/logo2.png' %}" alt="#">
+							<p>Experienced individuals offer advice, share ideas, and serve as role models.</p>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-4 col-12">
+						<!-- Start Single features -->
+						<div class="single-features">
+							<div class="signle-icon">
+								<i class="icofont icofont-education"></i>
+							</div>
+							<h3>Guidance and Mentorship</h3>
+							<p>Mentorship can provide numerous benefits for mentors and their mentees.</p>
+						</div>
+						<!-- End Single features -->
+					</div>
+					<div class="col-lg-4 col-12">
+						<!-- Start Single features -->
+						<div class="single-features">
+							<div class="signle-icon">
+								<i class="icofont icofont-company"></i>
+							</div>
+							<h3>Networking Opportunities</h3>
+							<p>An event that allows you to interact with business professionals to learn new skills.</p>
+						</div>
+						<!-- End Single features -->
+					</div>
+					<div class="col-lg-4 col-12">
+						<!-- Start Single features -->
+						<div class="single-features last">
+							<div class="signle-icon">
+								<i class="icofont icofont-architecture-alt"></i>
+							</div>
+							<h3>Skill Development</h3>
+							<p>The process of improving specific skills by training to be more efficient and effective.</p>
+						</div>
+						<!-- End Single features -->
+					</div>
+				</div>
+			</div>
+		</section>
+		<!--/ End Feautes -->
 
-
-
-
-
-    <!-- About Start -->
-    <div class="container-fluid py-5">
-        <div class="container pt-5">
-            <div class="row">
-                <div class="col-lg-6" style="min-height: 500px;">
-                    <div class="position-relative h-100">
-                        <img class="position-absolute w-100 h-100" src="{% static 'images/about.png' %}" style="object-fit: cover;">
-                    </div>
-                </div>
-                <div class="col-lg-6 pt-5 pb-lg-5">
-                    <div class="about-text bg-white p-4 p-lg-5 my-lg-5">
-                        <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">About Us</h6>
-                        <h1 class="mb-3">We help you to Start Your Career</h1>
-                        <p>ITT Helper helps others start their careers by providing guidance, support and resources to empower them on their career journey. One effective approach is mentorship, where experienced individuals offer advice, share ideas, and serve as role models. Encouraging communication is also crucial; Connecting aspiring professionals with industry contacts, strengthening relationships and facilitating informational interviews can broaden their understanding of potential career paths. Additionally, providing access to educational resources, workshops, and skill-building opportunities provides them with the tools to succeed. Constructive feedback and constructive criticism can help them hone their skills and overcome challenges. Furthermore, creating a supportive environment where individuals feel comfortable seeking guidance and sharing their aspirations fosters a sense of community and collaboration. Ultimately, helping others embark on their careers involves a multi-faceted approach that combines mentorship, networking, education, and a positive, inclusive atmosphere.</p>
-                        <div class="row mb-4">
-                            <div class="col-6">
-                                <img class="img-fluid" src="{% static 'images/about-1.jpg' %}" alt="">
-                            </div>
-                            <div class="col-6">
-                                <img class="img-fluid" src="{% static 'images/about-2.jpg' %}" alt="">
-                            </div>
-                        </div>
-                        <a href="./Registration.html" class="btn btn-primary mt-1">Sign Up</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- About End -->
-        
-        
-        <!-- Registration Start -->
-        <div class="container-fluid bg-registration py-5" style="margin: 90px 0;">
-            <div class="container py-5">
-                <div class="row align-items-center">
-                    <div class="col-lg-7 mb-5 mb-lg-0">
-                        <div class="mb-4">
-                            <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">ITT Helper</h6>
-                            <h1 class="text-white"><span class="text-primary"></span>We will help you to start your career </h1>
-                        </div>
-                        <p class="text-white">ITT Helper helps others start their careers by providing guidance, support and resources to empower them on their career journey.</p>
-                        <ul class="list-inline text-primary m-0">
-                            <li class="py-2"><i class="fa fa-check text-primary mr-3"></i>Guidance and Mentorship</li>
-                            <li class="py-2"><i class="fa fa-check text-primary mr-3"></i>Networking Opportunities</li>
-                            <li class="py-2"><i class="fa fa-check text-primary mr-3"></i>Skill Development and Training</li>
-                        </ul>
-                    </div>
-                    <div class="col-lg-5">
-                        <div class="card border-0">
-                            <div class="card-header bg-primary text-center p-4">
-                                <h1 class="text-white m-0">Log in Now</h1>
-                            </div>
-                            <div class="card-body rounded-bottom bg-white p-5">
-                                <form>
-                                    <div class="form-group">
-                                        <input type="text" class="form-control p-4" placeholder="Nick name" required="required" />
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="email" class="form-control p-4" placeholder="Your email" required="required" />
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="password" class="form-control p-4" placeholder="password" required="required" />
-                                    </div>
-                                    <div>
-                                        <button class="btn btn-primary btn-block py-3" type="submit">Log in Now</button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Registration End -->
-        
-        
-    
-    
-{% endblock %}
-    
-    
-   
+		<!-- Start Call to action -->
+		<section class="call-action overlay" data-stellar-background-ratio="0.5" style="background-image:url('{% static 'img/call-bg.png' %}');">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12 col-md-12 col-12">
+						<div class="content">
+							<h2>Do you need to contact us?<a href="https://wa.me/qr/2US7ZRHCKJVCL1"> </h2>
+							<h2>Call <u>+201021572715</u></h2>
+							<p>You can contact us on Whatsapp, Linked-In or Facebook.</p>
+							<div class="button">
+								<a href="{% url 'contact_us' %}" class="btn">Contact Now</a>
+								<a href="{% url 'chatbot' %}" class="btn" target="_blank">Learn More<i class="fa fa-long-arrow-right" style="margin-left: 10px;"></i></a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!--/ End Call to action -->
+		
+		<!-- Start portfolio -->
+		<section class="portfolio section" >
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="section-title">
+							<h2>communication is crucial</h2>
+							<img src="{% static 'img/logo2.png' %}" alt="#">
+							<p>Connecting aspiring professionals with experienced professionals, fostering relationships can broaden their understanding of potential career paths.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-lg-12 col-12">
+						<div class="owl-carousel portfolio-slider">
+							<div class="single-pf">
+								<img src="{% static 'img/pf1.png' %}" alt="#">
+								<a href="{% url 'chatbot' %}" target="_blank" class="btn">Learn More</a>
+							</div>
+							<div class="single-pf">
+								<img src="{% static 'img/pf2.png' %}" alt="#">
+								<a href="{% url 'chatbot' %}" target="_blank" class="btn">Learn More</a>
+							</div>
+							<div class="single-pf">
+								<img src="{% static 'img/pf3.png' %}" alt="#">
+								<a href="{% url 'chatbot' %}" target="_blank" class="btn">Learn More</a>
+							</div>
+							<div class="single-pf">
+								<img src="{% static 'img/pf4.png' %}" alt="#">
+								<a href="{% url 'chatbot' %}" target="_blank" class="btn">Learn More</a>
+							</div>
+							<div class="single-pf">
+								<img src="{% static 'img/pf1.png' %}" alt="#">
+								<a href="{% url 'chatbot' %}" target="_blank" class="btn">Learn More</a>
+							</div>
+							<div class="single-pf">
+								<img src="{% static 'img/pf2.png' %}" alt="#">
+								<a href="{% url 'chatbot' %}" target="_blank" class="btn">Learn More</a>
+							</div>
+							<div class="single-pf">
+								<img src="{% static 'img/pf3.png' %}" alt="#">
+								<a href="{% url 'chatbot' %}" target="_blank" class="btn">Learn More</a>
+							</div>
+							<div class="single-pf">
+								<img src="{% static 'img/pf4.png' %}" alt="#">
+								<a href="{% url 'chatbot' %}" target="_blank" class="btn">Learn More</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!--/ End portfolio -->
+		
+		<!-- Start service -->
+		<section class="services section">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="section-title">
+							<h2>We Are Always Ready to Help You To Start Your Career In Cyber-Security</h2>
+							<img src="{% static 'img/logo2.png' %}" alt="#">
+							<p>Learn about cybersecurity departments and the roadmap for each of them.</p>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-4 col-md-6 col-12">
+						<!-- Start Single Service -->
+						<div class="single-service">
+							<i class="icofont icofont-company"></i>
+							<h4>Mediator between students, universities and companies</a></h4>
+							<p>Helping communicate with company owners and experienced people.</p>	
+						</div>
+						<!-- End Single Service -->
+					</div>
+					<div class="col-lg-4 col-md-6 col-12">
+						<!-- Start Single Service -->
+						<div class="single-service">
+							<i class="icofont icofont-robot"></i>
+							<h4>Chatbot services to serve as a student assistant</a></h4>
+							<p>Student assistant to ask about any information related to cyber security.</p>	
+						</div>
+						<!-- End Single Service -->
+					</div>
+					<div class="col-lg-4 col-md-6 col-12">
+						<!-- Start Single Service -->
+						<div class="single-service">
+							<i class="icofont icofont-bank"></i>
+							<h4>Providing training and employment opportunities</a></h4>
+							<p>Helping to boost individual and organizational performance.</p>	
+						</div>
+						<!-- End Single Service -->
+					</div>
+					<div class="col-lg-4 col-md-6 col-12">
+						<!-- Start Single Service -->
+						<div class="single-service">
+							<i class="icofont icofont-prescription"></i>
+							<h4>Guides for CVs and Interviews</a></h4>
+							<p>Helping stand out from the crowd and secure a job interview.</p>	
+						</div>
+						<!-- End Single Service -->
+					</div>
+					<div class="col-lg-4 col-md-6 col-12">
+						<!-- Start Single Service -->
+						<div class="single-service">
+							<i class="icofont icofont-briefcase-1"></i>
+							<h4>The Virtual employment fair</a></h4>
+							<p>Enableing job-seekers to quickly reach out to the employers in a virtual space.</p>	
+						</div>
+						<!-- End Single Service -->
+					</div>
+					<div class="col-lg-4 col-md-6 col-12">
+						<!-- Start Single Service -->
+						<div class="single-service">
+							<i class="icofont icofont-presentation"></i>
+							<h4>Providing Events and workshops</a></h4>
+							<p>Sharing insights, experiences, and expertise.</p>	
+						</div>
+						<!-- End Single Service -->
+					</div>
+				</div>
+			</div>
+		</section>
+		<!--/ End service -->
+		
+		<!-- Pricing Table -->
+		
+		<!-- Start Appointment -->
+		
+		
+		<!-- Start Newsletter Area -->
+		<div class="clients overlay">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12 col-md-12 col-12">
+						<div class="owl-carousel clients-slider">
+							<div class="single-clients">
+								<img src="{% static 'img/client1.png' %}" alt="#">
+							</div>
+							<div class="single-clients">
+								<img src="{% static 'img/client2.png' %}" alt="#">
+							</div>
+							<div class="single-clients">
+								<img src="{% static 'img/client3.png' %}" alt="#">
+							</div>
+							<div class="single-clients">
+								<img src="{% static 'img/client4.png' %}" alt="#">
+							</div>
+							<div class="single-clients">
+								<img src="{% static 'img/client5.png' %}" alt="#">
+							</div>
+							<div class="single-clients">
+								<img src="{% static 'img/client1.png' %}" alt="#">
+							</div>
+							<div class="single-clients">
+								<img src="{% static 'img/client2.png' %}" alt="#">
+							</div>
+							<div class="single-clients">
+								<img src="{% static 'img/client3.png' %}" alt="#">
+							</div>
+							<div class="single-clients">
+								<img src="{% static 'img/client4.png' %}" alt="#">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		
+		
+		
+    {% endblock %}

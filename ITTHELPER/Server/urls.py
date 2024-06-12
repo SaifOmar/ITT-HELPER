@@ -13,6 +13,9 @@ urlpatterns = [
     path('employment',views.EmploymentView,name="employment"),
     path('cv',views.CVView,name="cv"),
     path('guides',views.InterviewGuidesView,name="guides"),
+    path("contact-us", views.ContactUs,name="contact_us"),
+    path("feedback", views.FeedBack,name="feedback"),
+    path("chatbot", views.ChatBot,name="chatbot"),
 
     path('courses/create',views.AddCoursesView,name="create_course"),
     path('jobs/create',views.AddJobView,name="create_job"),
@@ -25,5 +28,11 @@ urlpatterns = [
     path('training/delete/<int:id>',views.DeleteTraining,name="del_training"),
     path('careerpath/delete/<int:id>',views.DeleteCareerPath,name="del_path"),
     path('events/delete/<int:id>',views.DeleteEvents,name="del_event"),
+
+    path("courses/<int:id>",views.CourseDetialView,name ="courses_detail"),
+    path("jobs/<int:id>",views.JobDetialView,name ="Job_detail"),
+    path("training/<int:id>",views.TrainingDetailView,name ="training_detail"),
+    path("events/<int:id>",views.EventDetailView,name ="events_detail"),
+     
 
 ]

@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Chatbot{% endblock %}
+{% block body%}	
+	<div class="chatbot-interface" >
+        <!-- Chat Window -->
+        <div class="chat-window">
+            <!-- Chat History -->
+            <div class="chat-history">
+                <!-- Chat Messages -->
+                <div class="message incoming">Hello! How can I assist you today?</div>
+                <!-- End Chat Messages -->
+            </div>
+            <!-- End Chat History -->
+            <!-- User Input -->
+            <div class="user-input">
+                <input type="text" placeholder="Type your message here...">
+                <button>Send</button>
+            </div>
+            <!-- End User Input -->
+        </div>
+        <!-- End Chat Window -->
+    </div>
+{% endblock %}

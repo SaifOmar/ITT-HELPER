@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Feedback{% endblock %}
+{% block body%}		
+		<section class="appointment" style="background: #f9f9f9;">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="section-title">
+							<h2>We Are Always Ready to Answer For All Your Complaints And Suggestions</h2>
+							<img src="{% static 'img/logo2.png' %}" alt="#">
+							<p>Feedback keeps everyone on track.</p>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-6 col-md-12 col-12">
+						<form class="form" method="post" action="#">
+							{% csrf_token %}
+							<div class="row">
+								<div class="col-lg-6 col-md-6 col-12">
+									<div class="form-group">
+										<input name="name" type="text" placeholder="Name">
+									</div>
+								</div>
+								<div class="col-lg-6 col-md-6 col-12">
+									<div class="form-group">
+										<input name="email" type="email" placeholder="Email">
+									</div>
+								</div>
+								<div class="col-lg-6 col-md-6 col-12">
+									<div class="form-group">
+										<input name="phone" type="text" placeholder="Phone">
+									</div>
+								</div>
+								<div class="col-lg-6 col-md-6 col-12">
+									<div class="form-group">
+										<div class="nice-select form-control wide" tabindex="0"><span class="current">Position</span>
+											<ul class="list">
+												<li data-value="2" class="option">Employer</li>
+												<li data-value="3" class="option">College Student</li>
+												<li data-value="4" class="option">Fresh Graduate Student</li>
+												<li data-value="5" class="option">Graduate With No Experience</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-6 col-md-6 col-12">
+									<div class="form-group">
+										<div class="nice-select form-control wide" tabindex="0"><span class="current">Type</span>
+											<ul class="list">
+												<li data-value="2" class="option">Suggestion</li>
+												<li data-value="3" class="option">Complaint</li>
+												<li data-value="4" class="option">Adding Events Or Workshops</li>
+												<li data-value="5" class="option">Adding Training Opportunity</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-6 col-md-6 col-12">
+									<div class="form-group">
+										<input type="text" placeholder="Date" id="datepicker">
+									</div>
+								</div>
+								<div class="col-lg-12 col-md-12 col-12">
+									<div class="form-group">
+										<textarea name="message" placeholder="Write Your Message Here....."></textarea>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-lg-5 col-md-4 col-12">
+									<div class="form-group">
+										<div class="button">
+										    <button type="reset" class="btn">Reset</button>
+											<button type="submit" class="btn">Submit</button>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-7 col-md-8 col-12">
+									<p>( We will be confirm by an Text Message )</p>
+								</div>
+							</div>
+						</form>
+					</div>
+					<div class="col-lg-6 col-md-12 ">
+						<div class="appointment-image">
+							<img src="{% static 'img/contact-img.png' %}"alt="#" style="height: 100%; margin-top: 46px;">
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- End Appointment -->
+{% endblock %}
+		

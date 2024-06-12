@@ -61,7 +61,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-
     'corsheaders.middleware.CorsMiddleware',
     
 ]
@@ -69,14 +68,20 @@ MIDDLEWARE = [
 
 AUTH_USER_MODEL = 'accounts.CustomUser'
 
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 
+EMAIL_HOST = "smtp.gmail.com"
+
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+# DEFAULT_FROM_EMAIL = "Saif saifelyas722@gmail.com"
 
 REST_FRAMEWORK = {
     # Use Django's standard `django.contrib.auth` permissions,
     # or allow read-only access for unauthenticated users.
     'DEFAULT_PERMISSION_CLASSES' :(
         # non is needed for now
-        # 'rest_framework.permissions.IsAuthenticated',
+        'rest_framework.permissions.AllowAny',
         
     ),
     'DEFAULT_AUTHENTICATION_CLASSES': (
@@ -91,23 +96,14 @@ REST_FRAMEWORK = {
 }
 
 AUTHENTICATION_BACKENDS = [
+    'accounts.backends.MyCustomBackend',
     'django.contrib.auth.backends.ModelBackend',
-    'accounts.backends.MyCustomBackend'
     ]
     
 
-# SOCIALACCOUNT_PROVIDERS = {
-#     'google': {
-#         # For each OAuth based provider, either add a ``SocialApp``
-#         # (``socialaccount`` app) containing the required client
-#         # credentials, or list them here:
-#         'APP': {
-#             'client_id': '123',
-#             'secret': '456',
-#             'key': ''
-#         }
-#     }
-# }
+GOOGLE_REDIRECT_URI = "http://127.0.0.1:8000/accounts/callback"
+
+
 ROOT_URLCONF = 'ITTHELPER.urls'
 
 TEMPLATES = [
@@ -177,7 +173,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = 'static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATICFILES_DIRS = ['static/']
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+MEDIA_URL = 'media/'
+MEDIA_ROOT = os.path.join(BASE_DIR,'media')
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
