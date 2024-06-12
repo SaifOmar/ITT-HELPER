@@ -20,7 +20,8 @@ urlpatterns = [
     path("verify_email/mobile/confirm/<uidb64>/<token>",views.VerifyEmailCheck.as_view(),name="verify_email_mobile_check"),
 
 
-
+    path("profile",views.profile,name="profile"),
+    path("change-info",views.change_info,name="change_user_info"),
     path('signup',views.sign_up_user,name="signup"),
     path('login',views.login_user,name="login"),
     path("logout",views.logout_user,name="logout_user"),
@@ -28,6 +29,10 @@ urlpatterns = [
     path("verify_email/pending",views.verify_email_pending,name="verify_pending"),
     path("verify_email/confirm/<uidb64>/<token>",views.verify_email_confirm,name="verify_confirm"),
     path("verify_email/complete",views.verify_email_complete,name="verify_complete"),
-    path("change_password/site",views.change_password,name="change_pw_site"),
+    path("change_password/",views.change_password,name="change_pw"),
+    path("change_forgot_password/",views.change_forgot_password,name="change_forgot_pw"),
+    # path("change_password/site",views.change_password_site,name="change_pw_site"),
+    path("forgot_password",views.forgot_password,name="forgot_password"),
+    path("forgot_password_callback/<uidb64>/<token>",views.forgot_password_callback,name="forgot_password_callback"),
     path("callback",views.callback,name="callback")
 ]

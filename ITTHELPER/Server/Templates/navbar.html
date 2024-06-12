@@ -1,5 +1,5 @@
 {% load static %}
-		<!-- Get Pro Button -->
+		<!-- Get Pro Button
 		<ul class="pro-features">
 			<a class="get-pro">Get Pro</a>
 			<li class="title"><big>Pro Version Features</big></li>
@@ -10,7 +10,7 @@
 			<div class="button">
 				<a href="#" target="_blank" class="btn">Reserve The Diploma</a>
 			</div>
-		</ul>
+		</ul> -->
 <!-- Header Area -->
 		<header class="header" >
 			<!-- Header Inner -->
@@ -42,16 +42,46 @@
 											<li><a href="{% url 'guides' %}">Guides</a></li>
 											<li><a href="{% url 'contact_us'%}">Contact Us</a></li>
 											<li><a href="{% url 'feedback' %}">Feedback </a></li>
+											<!-- <li><a href="{% url 'feedback' %}">Feedback </a></li> -->
+											
+											<!-- add a profile page -->
+											<!-- <li><a href="{% url 'feedback' %}">Profile </a></li> -->
 										</ul>
 									</nav>
 								</div>
 								<!--/ End Main Menu -->
-							</div>
+							</div> 
+							{% if not user.is_authenticated %}
 							<div class="col-lg-2 col-12" style="align-items: center; padding-top: 12px; ">
 								<div class="get-quote">
-									<a href="{% url 'signup' %}" class="btn">Get Started</a>
+									<a class="btn btn-dark" href="{% url 'login' %}" class="btn">Login</a>
 								</div>
 							</div>
+							<!-- <div class="col-lg-2 col-12" style="align-items: center; padding-top: 12px; ">
+								<div class="get-quote">
+									<a class="btn btn-dark" href="{% url 'login' %}" class="btn">Sign Up</a>
+								</div>
+							</div> -->
+							{% else  %}
+					<div class="col-lg-2 col-12" style="align-items: center; padding-top: 12px; ">
+						<div class="get-quote" >
+							<div class="dropdown">
+  								<button class="btn btn-dark dropdown-toggle" type="button" 
+								data-bs-toggle="dropdown" aria-expanded="true" >Hello, {{user.first_name |title}} </button>
+								<ul class="dropdown-menu">
+									<li><a href="{% url 'profile' %}" class="dropdown-item" type="button">View Profile</a></li>
+									<li><form method="post" action="{% url 'logout_user' %}"> 
+										{% csrf_token %}
+										<button class="dropdown-item" type="submit">Log out</button>
+										</form>
+									</li>
+									
+								</ul>
+							</div>
+						</div>
+					</div>
+
+							{% endif %}
 						</div>
 					</div>
 				</div>

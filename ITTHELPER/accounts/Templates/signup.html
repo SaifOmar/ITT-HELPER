@@ -17,6 +17,7 @@ function validateSignUpForm() {
 
 
 }</script>
+
 <div class="breadcrumbs overlay">
 	<div class="container">
 		<div class="bread-inner">
@@ -54,6 +55,11 @@ function validateSignUpForm() {
     <div class="col-lg-6 col-md-12 order-md-1 order-2">
         <div class="section-wrapper">
             <div class="row">
+		{% if messages %}
+        {% for message in messages %}
+        <h6 style="margin-left: -1em;">{{message}}</h6>
+        {% endfor %}
+        {% endif %}
 				<form name ="singup_form" class="form" method="post" onsubmit="return validateSignUpForm()">
 						{% csrf_token %}
 							<div class="row">

@@ -60,10 +60,6 @@ class LogoutView(APIView):
             except :
                 return Response({"response":"you are already logged out"})
 
-
-
-
-
 jwt_authenticate_access = JWTAuthentication()
 class ChangePasswordView(APIView):
     # permission_classes = IsAuthenticated
@@ -86,7 +82,6 @@ class ChangePasswordView(APIView):
                 return Response(response)
         except :
                 return Response(response)
-
 
 class VerifyEmailMobile(APIView):
     def post(self,request):
@@ -207,39 +202,89 @@ def logout_user(request):
     if not request.user.is_authenticated :
         return redirect('login')
     # change to post method later
-    if request.method == "GET":
+    if request.method == "POST":
             logout(request)
             messages.success(request,"You logged out successfully")
             return redirect('login')
         
 
+def profile(request):
+    if not request.user.is_authenticated:
+        return redirect('login')
+    return render(request, "profile.html")
 
-
-
-@login_required
-def change_password(request):
+def change_info(request):
+    if not request.user.is_authenticated :
+        return redirect('login')
     if request.method == "POST":
-         if request.user.is_authenticated :
-            if request.user.email_is_verified != True:
-              return redirect(verify_email)
-            else :
-                user = request.user
-                old_password = request.POST.get("old_password")
-                password1 = request.POST.get("password1")
-                password2 = request.POST.get("password2")
-                if not check_password(old_password,user.password):
-                    messages.error(request, "The password you entered was incorrect")
-                    return redirect(change_password)
-                if password1 == password2 :
-                    user.set_password(password1)
-                    user.save()
-                    messages.success(request,"Password changed successfully")
-                    return redirect(change_password)
-                # need to handle what happens to user
-                else:
-                    messages.error(request, "Passwords don't match")
-                    return redirect(change_password)
-    return(request, "changepw.html")
+        try:
+            user = request.user
+            fname = request.POST.get("first_name")
+            lname= request.POST.get("last_name")
+            username= request.POST.get("username")
+            email= request.POST.get("email")
+            phone = request.POST.get("phone")
+            user.first_name = fname
+            user.last_name = lname
+            user.username = username
+            user.phone_number = phone 
+            user.email = email
+            user.save()
+        except:
+            messages.error(request, "Something went wrong!")
+            return redirect('profile')
+        messages.success(request,"Your info was updated!")
+        return redirect('profile')
+
+def change_password(request):
+    if not request.user.is_authenticated :
+        return redirect('login')
+    if request.method == "POST":
+        user = request.user
+        old_password = request.POST.get('old_password')
+        password1 = request.POST.get('password1')
+        password2 = request.POST.get('password2')
+        if check_password(old_password,user.password):
+            if password1 == password2:
+                user.set_password(password1)
+                user.save()
+                user = authenticate(u_e_p=user.email,password= password1)
+                login(request,user)
+                messages.success(request,"Password changed successfully")
+                return redirect('profile')
+            else : 
+                messages.error(request,"Password changed successfully")
+                return redirect('profile')
+        else :
+                messages.warning(request,"Please enter the correct old password")
+                return redirect('profile')
+                  
+
+
+# @login_required
+# def change_password_site(request):
+#     if request.method == "POST":
+#          if request.user.is_authenticated :
+#             if request.user.email_is_verified != True:
+#               return redirect(verify_email)
+#             else :
+#                 user = request.user
+#                 old_password = request.POST.get("old_password")
+#                 password1 = request.POST.get("password1")
+#                 password2 = request.POST.get("password2")
+#                 if not check_password(old_password,user.password):
+#                     messages.error(request, "The password you entered was incorrect")
+#                     return redirect('change_pw_site')
+#                 if password1 == password2 :
+#                     user.set_password(password1)
+#                     user.save()
+#                     messages.success(request,"Password changed successfully")
+#                     return redirect('change_pw_site')
+#                 # need to handle what happens to user
+#                 else:
+#                     messages.error(request, "Passwords don't match")
+#                     return redirect('change_pw_site')
+#     return(request, "changepw.html")
             
 
 #pw change email verification needs to be thought about and implemented later
@@ -251,27 +296,35 @@ def forgot_password(request):
     else :
         email = request.POST.get("email")
         user = CustomUser.objects.get(email=email)
+        if not user:
+            messages.error(request,"we couldn't find any accnounts with this email")
+            return redirect('login')
     if user:
-        site = get_current_site(request)
-        subject = "Forgot Password"
-        message = render_to_string(
-            'forgot_pw_msg.html', {
-                'request':request,
-                'user': user,
-                'domain': site.domain,
-                'uid': urlsafe_base64_encode(force_bytes(user.pk)),
-                'token': account_activation_token.make_token(user),
-                }
+        try :
+            site = get_current_site(request)
+            subject = "Forgot Password"
+            message = render_to_string(
+                'forgot_pw_msg.html', {
+                    'request':request,
+                    'user': user,
+                    'domain': site.domain,
+                    'uid': urlsafe_base64_encode(force_bytes(user.pk)),
+                    'token': account_activation_token.make_token(user),
+                    }
+                )
+            E = EmailMessage(
+                subject,message,to = [email]
             )
-        E = EmailMessage(
-            subject,message,to = [email]
-        )
-        E.content_subtype = 'html'
-        E.send()
-        return render(request, "forgot_password")
+            E.content_subtype = 'html'
+            E.send()
+            messages.success(request,"We sent you an email, Please check your inbox!")
+            return redirect("profile")
+        except :
+            messages.error(request,"something went wrong")
+            return redirect('profile')
     else :
         messages.error(request,"we couldn't find any accnounts with this email")
-        return redirect(forgot_password)
+        return redirect('profile')
 
 def forgot_password_callback(request,uidb64,token):
     try:
@@ -280,12 +333,28 @@ def forgot_password_callback(request,uidb64,token):
     except(TypeError, ValueError, OverflowError, CustomUser.DoesNotExist):
         user = None
     if user is not None and account_activation_token.check_token(user, token):
-        # should either log in and redirect to the change password page, or do pw change template in it, change all redirects
-        messages.success(request, 'Your email has been verified.')
-        return redirect(verify_email_complete)   
+        if not request.user.is_authenticated :
+            user = authenticate(e_u_p = user.email,password = user.password)
+            login(request,user)
+        # should either log in and redirect to the change password page, or do pw change template in it, change all redirects 
+        return render(request,'change_pw_forgot.html')   
     else:
         messages.warning(request, 'The link is invalid.')
-    return render(request, 'verify_email_confirm.html')
+        return redirect('profile')
+    
+def change_forgot_password(request):
+    if request.method == "POST":
+        user = request.user
+        p1 = request.POST.get('password1')
+        p2 = request.POST.get('password2')
+        if p1 == p2 :
+            user.set_password(p1)
+            user.save()
+            return redirect('profile')
+        else :
+            messages.warning(request,"Passwords don't match")
+            return redirect('profile')
+            
 
 
 @login_required

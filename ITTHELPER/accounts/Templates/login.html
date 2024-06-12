@@ -31,6 +31,11 @@
 					</div>
 				</div>
 				<div class="row">
+                    {% if messages %}
+        {% for message in messages %}
+        <h5 style="margin-left: 1em;">{{message}}</h5>
+        {% endfor %}
+        {% endif %}
     <div class="col-lg-6 col-md-12 order-md-2 order-1">
         <div class="appointment-image">
             <img src="{% static 'img/login.png' %}" alt="#" style="height: 100%; margin-top: 10px;">
