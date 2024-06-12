@@ -71,10 +71,15 @@ AUTH_USER_MODEL = 'accounts.CustomUser'
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 
 EMAIL_HOST = "smtp.gmail.com"
-
+EMAIL_HOST_USER = "saifelyas722@gmail.com"
+EMAIL_HOST_PASSWORD = "zscbijfepbjztxvv"
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 # DEFAULT_FROM_EMAIL = "Saif saifelyas722@gmail.com"
+
+GOOGLE_CLINET_SECRET = ""
+GOOGLE_CLIENT_ID  = ""
+GOOGLE_REDIRECT_URI = "http://127.0.0.1:8000/accounts/callback"
 
 REST_FRAMEWORK = {
     # Use Django's standard `django.contrib.auth` permissions,
@@ -82,6 +87,7 @@ REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES' :(
         # non is needed for now
         'rest_framework.permissions.AllowAny',
+        # 'rest_framework.permissions.IsAuthenticated',
         
     ),
     'DEFAULT_AUTHENTICATION_CLASSES': (
@@ -100,8 +106,6 @@ AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
     ]
     
-
-GOOGLE_REDIRECT_URI = "http://127.0.0.1:8000/accounts/callback"
 
 
 ROOT_URLCONF = 'ITTHELPER.urls'
@@ -177,7 +181,6 @@ STATICFILES_DIRS = ['static/']
 # STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 MEDIA_URL = 'media/'
 MEDIA_ROOT = os.path.join(BASE_DIR,'media')
-
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 

@@ -144,26 +144,35 @@ def sign_up_user(request):
             email = request.POST.get("email")
             first_name = request.POST.get("first_name")
             last_name= request.POST.get("last_name")
-            password= request.POST.get("password")
+            password1= request.POST.get("password1")
+            password2= request.POST.get("password2")
             phone_number = request.POST.get("phone")
             # date_of_birth = request.POST.get("date_of_birth")
+            if password2 != password1 :
+                messages.warning(request,"Passwords didn't match")
+                return redirect('signup')
             try :
+                    password = password2
                     user = CustomUser.objects.create(
                     username=username,
                     email=email,
                     phone_number=phone_number,
                     first_name = first_name,
                     last_name=last_name
-                    # date_of_birth=date_of_birth
                     )
                     user.set_password(password)
                     user.save()
                     if user :
+                        user = authenticate(
+                            u_e_p = username,
+                            password=password)
+                        login(request,user)
                         return redirect('verify_email')
                     else :
-                        return redirect('singup')
+                        messages.error(request,"we couldn't sign you up 1")
+                        return redirect('signup')
             except: 
-                    messages.error(request,"we couldn't sign you up")
+                    messages.error(request,"we couldn't sign you up 2")
                     return redirect('signup')
     return render(request,'signup.html')
 

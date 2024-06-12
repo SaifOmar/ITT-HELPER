@@ -323,9 +323,9 @@ Version:	1.1
 	/*====================
 		Preloader JS
 	======================*/
-	$(window).on('load', function() {
-		$('.preloader').addClass('preloader-deactivate');
-	});
+	// $(window).on('load', function() {
+	// 	$('.preloader').addClass('preloader-deactivate');
+	// });
 	
 	
 })(jQuery);

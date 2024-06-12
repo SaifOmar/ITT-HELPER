@@ -1,9 +1,9 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block body%}
-		<!-- Slider Area -->
+	<!-- Slider Area -->
 		<section class="slider">
-			<div class="hero-slider">
+			
 				<!-- Start Single Slider -->
 				<div class="single-slider" style="background-image: url('{% static 'img/slider.png' %}');">
 					<div class="container">
@@ -13,7 +13,6 @@
 									<h1>We help you to start your <span>Career In Cyber-Security</span></h1>
 									<p><b>ITTT Helper helps others start their careers by providing guidance, support and resources to empower them on their career journey. </b></p>
 									<div class="button">
-										<a href="{% url 'chatbot' %}" target="_blank" class="btn">Learn More</a>
 										<a href="{% url 'contact_us' %}" class="btn primary">Contact Us</a>
 									</div>
 								</div>
@@ -21,9 +20,9 @@
 						</div>
 					</div>
 				</div>
-				<!-- End Single Slider -->
+				<section class="slider">
 				<!-- Start Single Slider -->
-				<div class="single-slider" style="background-image: url('{% static 'img/slider2.png' %}');">
+				<!-- <div class="single-slider" style="background-image:url('img/slider.png')">
 					<div class="container">
 						<div class="row">
 							<div class="col-lg-7">
@@ -31,18 +30,14 @@
 									<h1>We help you to start your <span>Career In Cyber-Security</span></h1>
 									<p><b>ITTT Helper helps others start their careers by providing guidance, support and resources to empower them on their career journey. </b></p>
 									<div class="button">
-										<a href="{% url 'chatbot' %}" target="_blank" class="btn">Learn More</a>
-										<a href="{% url 'contact_us' %}" class="btn primary">Contact Us</a>
+										<a href="contact.html" class="btn primary">Contact Us</a>
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
-				</div>
-				<!-- Start End Slider -->
-				<!-- Start Single Slider -->
-				
-				<!-- End Single Slider -->
+				</div> -->
+				<!-- End Single Slider -->	
 			</div>
 		</section>
 		<!--/ End Slider Area -->
@@ -62,7 +57,6 @@
 									<div class="single-content">
 										<h4>penetration Testing</h4>
 										<p>A security exercise where a cyber-security expert attempts to find vulnerabilities which attackers could take advantage of in a computer system.</p>
-										<a href="{% url 'chatbot' %}" target="_blank">LEARN MORE<i class="fa fa-long-arrow-right"></i></a>
 									</div>
 								</div>
 							</div>
@@ -77,7 +71,6 @@
 									<div class="single-content">
 										<h4>Red Teaming</h4>
 										<p>Occurs when ethical hackers are authorized by your organization to emulate real attackers (TTPs) against your own systems.</p>
-										<a href="{% url 'chatbot' %}" target="_blank">LEARN MORE<i class="fa fa-long-arrow-right"></i></a>
 									</div>
 								</div>
 							</div>
@@ -92,7 +85,6 @@
 									<div class="single-content">
 										<h4>Blue Teaming</h4>
 										<p>Your organization's cybersecurity team is the primary defense against various threats, including phishing attacks and suspicious activity.</p>
-										<a href="{% url 'chatbot' %}" target="_blank">LEARN MORE<i class="fa fa-long-arrow-right"></i></a>
 									</div>
 								</div>
 							</div>
@@ -165,7 +157,6 @@
 							<p>You can contact us on Whatsapp, Linked-In or Facebook.</p>
 							<div class="button">
 								<a href="{% url 'contact_us' %}" class="btn">Contact Now</a>
-								<a href="{% url 'chatbot' %}" class="btn" target="_blank">Learn More<i class="fa fa-long-arrow-right" style="margin-left: 10px;"></i></a>
 							</div>
 						</div>
 					</div>
@@ -193,35 +184,27 @@
 						<div class="owl-carousel portfolio-slider">
 							<div class="single-pf">
 								<img src="{% static 'img/pf1.png' %}" alt="#">
-								<a href="{% url 'chatbot' %}" target="_blank" class="btn">Learn More</a>
 							</div>
 							<div class="single-pf">
 								<img src="{% static 'img/pf2.png' %}" alt="#">
-								<a href="{% url 'chatbot' %}" target="_blank" class="btn">Learn More</a>
 							</div>
 							<div class="single-pf">
 								<img src="{% static 'img/pf3.png' %}" alt="#">
-								<a href="{% url 'chatbot' %}" target="_blank" class="btn">Learn More</a>
 							</div>
 							<div class="single-pf">
 								<img src="{% static 'img/pf4.png' %}" alt="#">
-								<a href="{% url 'chatbot' %}" target="_blank" class="btn">Learn More</a>
 							</div>
 							<div class="single-pf">
 								<img src="{% static 'img/pf1.png' %}" alt="#">
-								<a href="{% url 'chatbot' %}" target="_blank" class="btn">Learn More</a>
 							</div>
 							<div class="single-pf">
 								<img src="{% static 'img/pf2.png' %}" alt="#">
-								<a href="{% url 'chatbot' %}" target="_blank" class="btn">Learn More</a>
 							</div>
 							<div class="single-pf">
 								<img src="{% static 'img/pf3.png' %}" alt="#">
-								<a href="{% url 'chatbot' %}" target="_blank" class="btn">Learn More</a>
 							</div>
 							<div class="single-pf">
 								<img src="{% static 'img/pf4.png' %}" alt="#">
-								<a href="{% url 'chatbot' %}" target="_blank" class="btn">Learn More</a>
 							</div>
 						</div>
 					</div>
@@ -308,7 +291,7 @@
 		
 		
 		<!-- Start Newsletter Area -->
-		<div class="clients overlay">
+		<div class="clients overlay" style="background-image: url('{% static 'img/client-bg.png' %}');">
 			<div class="container">
 				<div class="row">
 					<div class="col-lg-12 col-md-12 col-12">
