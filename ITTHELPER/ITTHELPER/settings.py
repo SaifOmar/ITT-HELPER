@@ -77,8 +77,8 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 # DEFAULT_FROM_EMAIL = "Saif saifelyas722@gmail.com"
 
-GOOGLE_CLINET_SECRET = ""
-GOOGLE_CLIENT_ID  = ""
+GOOGLE_CLIENT_ID = "693408314399-79t1v95kn4ehhievt78pqlrpq4gp0n8g.apps.googleusercontent.com"
+GOOGLE_CLIENT_SECRET = "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"
 GOOGLE_REDIRECT_URI = "http://127.0.0.1:8000/accounts/callback"
 
 REST_FRAMEWORK = {
