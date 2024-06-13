@@ -6,6 +6,8 @@ class CourseForm(ModelForm):
         model = Course 
         fields = "__all__"
 
+    
+
 
 class CareerPathForm(ModelForm):
     class Meta :

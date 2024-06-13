@@ -63,30 +63,30 @@ def JobDetialView(request,id):
 @login_required
 @permission_required("server.can_add_Course")
 def AddCoursesView(request):
-    form = CourseForm(request.POST)
+    form = CourseForm(request.POST,request.FILES)
     if request.method == "POST":
         if form.is_valid():
             form.save()
             return redirect(CoursesView)
         else:
-            return render(request, "addcourses.html",{"form":form})
-    return render(request,"addcourses.html",{"form":form})
+            return render(request, "addcourse.html",{"form":form})
+    return render(request,"addcourse.html",{"form":form})
 
 @login_required
 @permission_required("server.can_add_CareerPath")
 def AddCareerPathView(request):
-    form = CareerPathForm(request.POST)
+    form = CareerPathForm(request.POST,request.FILES)
     if request.method == "POST":
         if form.is_valid():
             form.save()
             return redirect(CareerPathView)
         else:
-            return render(request,"addcareerpaths.html",{"form":form})
-    return render(request,"addcareerpaths.html",{"form":form})
+            return render(request,"addpath.html",{"form":form})
+    return render(request,"addpath.html",{"form":form})
 @login_required
 @permission_required("server.can_add_Jobs")
 def AddJobView(request):
-    form = JobsForm(request.POST)
+    form = JobsForm(request.POST,request.FILES)
     if request.method == "POST":
         if form.is_valid():
             form.save()
@@ -97,7 +97,7 @@ def AddJobView(request):
 @login_required
 @permission_required("server.can_add_Training")
 def AddTrainingView(request):
-    form = TrainingForm(request.POST)
+    form = TrainingForm(request.POST,request.FILES)
     if request.method == "POST":
         if form.is_valid():
             form.save()

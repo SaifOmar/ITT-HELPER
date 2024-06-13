@@ -26,9 +26,6 @@ from django.contrib.auth.hashers import check_password
 from django.conf import settings 
 import requests
 
-
-
-
 # Create your views here.
 
 # These are tthe mobile app views
@@ -126,11 +123,9 @@ class VerifyEmailCheck(APIView):
 
 
 
-#These are the website views
 
 
-
-    
+#These are the website views    
 def sign_up_user(request):
     if request.user.is_authenticated:
         return redirect('home')
@@ -231,7 +226,7 @@ def change_info(request):
             user.email = email
             user.save()
         except:
-            messages.error(request, "Something went wrong!")
+            messages.error(request, "Something went wrong.")
             return redirect('profile')
         messages.success(request,"Your info was updated!")
         return redirect('profile')
@@ -261,34 +256,6 @@ def change_password(request):
                   
 
 
-# @login_required
-# def change_password_site(request):
-#     if request.method == "POST":
-#          if request.user.is_authenticated :
-#             if request.user.email_is_verified != True:
-#               return redirect(verify_email)
-#             else :
-#                 user = request.user
-#                 old_password = request.POST.get("old_password")
-#                 password1 = request.POST.get("password1")
-#                 password2 = request.POST.get("password2")
-#                 if not check_password(old_password,user.password):
-#                     messages.error(request, "The password you entered was incorrect")
-#                     return redirect('change_pw_site')
-#                 if password1 == password2 :
-#                     user.set_password(password1)
-#                     user.save()
-#                     messages.success(request,"Password changed successfully")
-#                     return redirect('change_pw_site')
-#                 # need to handle what happens to user
-#                 else:
-#                     messages.error(request, "Passwords don't match")
-#                     return redirect('change_pw_site')
-#     return(request, "changepw.html")
-            
-
-#pw change email verification needs to be thought about and implemented later
-# refactor but you have base now
 def forgot_password(request):
     if request.user.is_authenticated:
         user = request.user
@@ -323,8 +290,9 @@ def forgot_password(request):
             messages.error(request,"something went wrong")
             return redirect('profile')
     else :
-        messages.error(request,"we couldn't find any accnounts with this email")
+        messages.error(request,"we couldn't find any accounts with this email")
         return redirect('profile')
+
 
 def forgot_password_callback(request,uidb64,token):
     try:
@@ -336,11 +304,11 @@ def forgot_password_callback(request,uidb64,token):
         if not request.user.is_authenticated :
             user = authenticate(e_u_p = user.email,password = user.password)
             login(request,user)
-        # should either log in and redirect to the change password page, or do pw change template in it, change all redirects 
         return render(request,'change_pw_forgot.html')   
     else:
         messages.warning(request, 'The link is invalid.')
         return redirect('profile')
+    
     
 def change_forgot_password(request):
     if request.method == "POST":
@@ -447,7 +415,7 @@ def callback(request):
             try :
                 CustomUser.objects.create(
                 email= user_info["email"],
-                #would fail bcs phone and username are needed i think
+                # would fail bcs phone and username are needed i think
                 # make username from email (before@) or random username using the email and make phone number not necesaary to sign up
                 first_name = user_info["given_name"],
                 last_name = user_info["family_name"],

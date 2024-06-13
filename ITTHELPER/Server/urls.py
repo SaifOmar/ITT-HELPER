@@ -22,7 +22,7 @@ urlpatterns = [
     path('courses/create',views.AddCoursesView,name="create_course"),
     path('jobs/create',views.AddJobView,name="create_job"),
     path('training/create',views.AddTrainingView,name="create_training"),
-    path('careerpath/create',views.AddCareerPathView,name="create_path"),
+    path('path/create',views.AddCareerPathView,name="create_path"),
     path('events/create',views.AddEvents,name="create_event"),
 
     path('courses/delete/<int:id>',views.DeleteCourse,name="del_course"),

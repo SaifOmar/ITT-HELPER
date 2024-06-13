@@ -72,6 +72,10 @@
 							</div>
 						</div>
 						<!-- End Single Blog -->
+						 {% if user.is_staff %}
+							<a class="btn btn-dark" href="{% url 'create_training' %}"  style="max-width: 100%; text-align: center; 
+							justify-content: center;  margin-top: 5% ; margin-right: 100%;	align-items: center;">Add Training</a>
+							{% endif %}
 					</div>
 				</div>
 			</div>

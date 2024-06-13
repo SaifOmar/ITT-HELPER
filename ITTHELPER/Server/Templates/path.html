@@ -76,8 +76,13 @@
 								</div>
 							</div>
 						</div>
+							{% if user.is_staff %}
+							<a class="btn btn-dark" href="{% url 'create_path' %}"  style="max-width: 13%; text-align: center; 
+							justify-content: center;  margin-top: 5% ; margin-left: 62%;	align-items: center;">Add Path</a>
+							{% endif %}
 					</div>
 				</div>
 			</div>
+			
 		</section>
 		{% endblock %}

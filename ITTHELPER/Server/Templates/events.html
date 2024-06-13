@@ -91,6 +91,10 @@
 							</div>
 							<!-- Table Bottom -->
 						</div>
+						{% if user.is_staff %}
+							<a class="btn btn-dark" href="{% url 'create_event' %}"  style="max-width: 40%; text-align: center; 
+							justify-content: center;  margin-top: 5% ; margin-left: 0%;	align-items: center;">Add Event</a>
+							{% endif %}
 					</div>
 					<!-- End Single Table-->
 				</div>	
