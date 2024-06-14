@@ -21,16 +21,12 @@
 					</div>
 				</div>
 				<!-- End Single Slider -->
-				<!-- Start Single Slider -->
-				<!-- Start End Slider -->
-				<!-- Start Single Slider -->
-				
-				<!-- End Single Slider -->
 		</section>
 		<section class="schedule">
 			<div class="container">
 				<div class="schedule-inner">
 					<div class="row">
+						{% for path in cp %}
 						<div class="col-lg-4 col-md-6 col-12 ">
 							<!-- single-schedule -->
 							<div class="single-schedule first">
@@ -39,44 +35,16 @@
 										<i class="icofont-education"></i>
 									</div>
 									<div class="single-content">
-										<h4>penetration Testing</h4>
-										<p>A security exercise where a cyber-security expert attempts to find vulnerabilities which attackers could take advantage of in a computer system.</p>
+										<h4>{{path.Paths | title}}</h4>
+										<p>{{path.describition}}</p>
 										<a href="{% url 'roadmap-pen_testing' %}" target="_blank">Road map<i class="fa fa-long-arrow-right"></i></a>
 									</div>
 								</div>
 							</div>
 						</div>
-						<div class="col-lg-4 col-md-6 col-12">
-							<!-- single-schedule -->
-							<div class="single-schedule middle">
-								<div class="inner">
-									<div class="icon">
-										<i class="icofont-education"></i>
-									</div>
-									<div class="single-content">
-										<h4>Red Teaming</h4>
-										<p>Occurs when ethical hackers are authorized by your organization to emulate real attackers (TTPs) against your own systems.</p>
-										<a href="{% url 'roadmap-red_teaming' %}" target="_blank">Road map<i class="fa fa-long-arrow-right"></i></a>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-4 col-md-12 col-12">
-							<!-- single-schedule -->
-							<div class="single-schedule last">
-								<div class="inner">
-									<div class="icon">
-										<i class="icofont-education"></i>
-									</div>
-									<div class="single-content">
-										<h4>Blue Teaming</h4>
-										<p>Your organization's cybersecurity team is the primary defense against various threats, including phishing attacks and suspicious activity.</p>
-										<a href="{% url 'roadmap-blue_teaming' %}" target="_blank">Road map<i class="fa fa-long-arrow-right"></i></a>
-									</div>
-								</div>
-							</div>
-						</div>
-							{% if user.is_staff %}
+						{% endfor %}
+						
+							{% if user.is_superuser %}	
 							<a class="btn btn-dark" href="{% url 'create_path' %}"  style="max-width: 13%; text-align: center; 
 							justify-content: center;  margin-top: 5% ; margin-left: 62%;	align-items: center;">Add Path</a>
 							{% endif %}

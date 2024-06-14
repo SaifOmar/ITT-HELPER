@@ -1,87 +1,63 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block title %}Courses{% endblock %}
-{% block body%}	
-		<!-- End Header Area -->
-		
-		<!-- Pricing Table -->
-		<!-- Start Blog Area -->
-		<section class="blog section" id="blog" style="background: #f9f9f9;">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-12">
-						<div class="section-title">
-							<h2>Providing a range of courses</h2>
+{% block title %}Training{% endblock %}
+{% block body %}
+<!-- Start Blog Area -->
+<style>
+    .date a {
+        text-decoration: none; /* Remove underline from links */
+    }
+    .date a:hover {
+        background: #0C4257;
+        color: #000000;
+    }
+    .news-head img {
+        width: 100%; /* Make sure the image takes up the full width of its container */
+        height: 200px; /* Fixed height for uniformity */
+        object-fit: cover; /* Ensure the image covers the container while maintaining aspect ratio */
+    }
+</style>
+
+<section class="blog section" id="blog" style="background: #f9f9f9;">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="section-title">
+                    <h2>Providing a range of courses</h2>
 							<img src="{% static 'img/logo2.png' %}" alt="#">
 							<p>The best suggestions of courses saves you effort and time.</p>
-						</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-lg-4 col-md-6 col-12">
-						<!-- Single Blog -->
-						<div class="single-news">
-							<div class="news-head">
-								<img src="{% static 'img/blog1.png' %}" alt="#">
-							</div>
-							<div class="news-body">
-								<div class="news-content">
-								<style>
-								.date a{
-								text-decoration: none; /* إزالة تأثير الرابط */
-								}
-								.date a:hover {
-								background:#0C4257;
-								color:#000000;
-								}
-								</style>
-									<div class="date"><a href="https://youtube.com/playlist?list=PLped9VG7STA-SnQv4X9lauBZGH4rW8ICF&si=dFLTXLDR8wK0vh7i">Start Course</a></div>
-									<h2>CCNA (Cisco Certified Network Associate)</a></h2>
-									<p class="text">Eng. Abeer Hosny</p>
-								</div>
-							</div>
-						</div>
-						<!-- End Single Blog -->
-					</div>
-					<div class="col-lg-4 col-md-6 col-12">
-						<!-- Single Blog -->
-						<div class="single-news">
-							<div class="news-head">
-								<img src="{% static 'img/blog2.png' %}" alt="#">
-							</div>
-							<div class="news-body">
-								<div class="news-content">
-									<div class="date"><a href="https://youtube.com/playlist?list=PL77yNtB4-Ljkv_urGap0RoLeRHQVVCWMt&si=SD0DfV-Bnd0MA31-">Start Course</a></div>
-									<h2>MCSA (Microsoft Certified Solutions Associate)</a></h2>
-									<p class="text">Eng. Ahmed Nazmy</p>
-								</div>
-							</div>
-						</div>
-						<!-- End Single Blog -->
-					</div>
-					<div class="col-lg-4 col-md-6 col-12">
-						<!-- Single Blog -->
-						<div class="single-news">
-							<div class="news-head">
-								<img src="{% static 'img/blog3.png' %}" alt="#">
-							</div>
-							<div class="news-body">
-								<div class="news-content">
-									<div class="date"><a href="https://youtube.com/playlist?list=PLLlr6jKKdyK3ZtVskQEAkiHZjcGCrkJOR&si=qzP2a_08TUUSPCva">Start Course</a></div>
-									<h2>CCNP (Cisco Certified Network Professional)</a></h2>
-									<p class="text">Eng. Abeer Hosny</p>
-								</div>
-							</div>
-						</div>
-						{% if user.is_staff %}
-							<a class="btn btn-dark" href="{% url 'create_course' %}"  style="max-width: 40%; text-align: center; 
-							justify-content: center;  margin-top: 5% ; margin-left: 42%;	align-items: center;">Add Course</a>
-							{% endif %}
-						<!-- End Single Blog -->
-					</div>
-				</div>
-			</div>
-		</section>
-		<!-- End Blog Area -->
-		 {% endblock %}
-		
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            {% for course in courses %}
+                <div class="col-lg-4 col-md-6 col-12 mb-4">
+                    <div class="single-news h-100">
+                        <div class="news-head">
+                            <img src="{{course.image.url}}" class="img-fluid" alt="img not found">
+                        </div>
+                        <div class="news-body">
+                            <div class="news-content">
+                                <h2>{{course.CourseName}}</h2>
+                                <h5>{{training.TrainingCompany.first.CompanyName}}</h5>
+                                <p class="text"> <a href="http://127.0.0.1:8000/path">{{course.Path.first}}</a></p>
+                                <p class="text"><a href="http://127.0.0.1:8000/events">{{course.RelatedEvents.first}}</a></p>
+                                <p class="text">{{course.author}}</p>
+								<div class="date"><a href="{{course.link}}" target="_blank">View Course</a></div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+        {% if user.is_superuser %}
+            <div class="text-center mt-4">
+                <a class="btn btn-dark" href="{% url 'create_training' %}">Add Training</a>
+            </div>
+        {% endif %}
+    </div>
+</section>
+{% endblock %}

@@ -2,6 +2,13 @@
 {% load static %}
 {% block title %}Events{% endblock %}
 {% block body%}	
+<style>
+	.news-head img {
+        width: 100%; /* Make sure the image takes up the full width of its container */
+        height: 200px; /* Fixed height for uniformity */
+        object-fit: cover; /* Ensure the image covers the container while maintaining aspect ratio */
+    }
+</style>
 		<!-- Pricing Table -->
 		<section class="pricing-table section" style="background: #f9f9f9;">
 			<div class="container">
@@ -16,88 +23,40 @@
 				</div>
 				<div class="row">
 					<!-- Single Table -->
-					<div class="col-lg-4 col-md-12 col-12">
-						<div class="single-table">
-							<!-- Table Head -->
-							<div class="table-head">
-								<div class="icon">
-									<i class="icofont icofont-meeting-add"></i>
+					 {% for event in events %}
+					 <div class="col-lg-4 col-md-12 col-12">
+						 <div class="single-table">
+							 <!-- Table Head -->
+							 <div class="table-head">
+								 <div class="news-head">
+									<img  class="img-fluid" src="{{event.image.url}}" alt="img not found">
+									</div>
+									<h4 class="title">{{event.event}}</h4>
+									<div class="price">
+										<p class="amount">{{event.Price}}<span>/ Per Person</span></p>
+									</div>	
 								</div>
-								<h4 class="title">NSP Explore</h4>
-								<div class="price">
-									<p class="amount">50LE<span>/ Per Person</span></p>
-								</div>	
-							</div>
-							<!-- Table List -->
-							<ul class="table-list">
-								<li><i class="icofont icofont-ui-check"></i>Date: 25/4/2024</li>
-								<li><i class="icofont icofont-ui-check"></i>Location: Tanta University</li>
-								<li><i class="icofont icofont-ui-check"></i>Deadline: 20/4/2024</li>
-							</ul>
-							<div class="table-bottom">
-								<a class="btn" href="#">Book Now</a>
-							</div>
-							<!-- Table Bottom -->
-						</div>
-					</div>
-					<!-- End Single Table-->
-					<!-- Single Table -->
-					<div class="col-lg-4 col-md-12 col-12">
-						<div class="single-table">
-							<!-- Table Head -->
-							<div class="table-head">
-								<div class="icon">
-									<i class="icofont icofont-meeting-add"></i>
+								<!-- Table List -->
+								<ul class="table-list">
+									<li><i class="icofont icofont-ui-check"></i>Date: {{event.EventDate}}</li>
+									<li><i class="icofont icofont-ui-check"></i>Location: {{event.Eventplace}}</li>
+									<li><i class="icofont icofont-ui-check"></i>Deadline: {{event.Deadline}}</li>
+								</ul>
+								<div class="table-bottom">
+									<a class="btn" href="#">Book Now</a>
 								</div>
-								<h4 class="title">Techne Summit</h4>
-								<div class="price">
-									<p class="amount">100LE<span>/ Per Person</span></p>
-								</div>	
+								<!-- Table Bottom -->
 							</div>
-							<!-- Table List -->
-							<ul class="table-list">
-								<li><i class="icofont icofont-ui-check"></i>Date: 30/5/2024</li>
-								<li><i class="icofont icofont-ui-check"></i>Location: Alexandria Library</li>
-								<li><i class="icofont icofont-ui-check"></i>Deadline: 15/5/2024</li>
-							</ul>
-							<div class="table-bottom">
-								<a class="btn" href="#">Book Now</a>
-							</div>
-							<!-- Table Bottom -->
 						</div>
-					</div>
-					<!-- End Single Table-->
-					<!-- Single Table -->
-					<div class="col-lg-4 col-md-12 col-12">
-						<div class="single-table">
-							<!-- Table Head -->
-							<div class="table-head">
-								<div class="icon">
-									<i class="icofont-meeting-add"></i>
-								</div>
-								<h4 class="title">DevFest</h4>
-								<div class="price">
-									<p class="amount">75LE<span>/ Per Person</span></p>
-								</div>	
-							</div>
-							<!-- Table List -->
-							<ul class="table-list">
-								<li><i class="icofont icofont-ui-check"></i>Date: 15/5/2024</li>
-								<li><i class="icofont icofont-ui-check"></i>Location: Menoufia University</li>
-								<li><i class="icofont icofont-ui-check"></i>Deadline: 30/4/2024</li>
-							</ul>
-							<div class="table-bottom">
-								<a class="btn" href="#">Book Now</a>
-							</div>
-							<!-- Table Bottom -->
-						</div>
-						{% if user.is_staff %}
-							<a class="btn btn-dark" href="{% url 'create_event' %}"  style="max-width: 40%; text-align: center; 
+						{% endfor %}
+						
+						{% if user.is_superuser %}	
+						<a class="btn btn-dark" href="{% url 'create_event' %}"  style="max-width: 40%; text-align: center; 
 							justify-content: center;  margin-top: 5% ; margin-left: 0%;	align-items: center;">Add Event</a>
 							{% endif %}
+							<!-- End Single Table-->
+						</div>	
 					</div>
-					<!-- End Single Table-->
-				</div>	
 			</div>	
 		</section>	
 		<!--/ End Pricing Table -->

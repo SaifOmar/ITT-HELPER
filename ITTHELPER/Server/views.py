@@ -1,7 +1,10 @@
-from django.shortcuts import render, get_object_or_404,redirect
+from django.shortcuts import render, get_object_or_404,redirect,HttpResponse
 from .models import Course , Training , EventsAndWorkshops,  Jobs, CareerPath
 from .forms import CourseForm,CareerPathForm,JobsForm,TrainingForm,EventsForm
 from django.contrib.auth.decorators import permission_required, login_required
+from django.contrib import messages
+from django.core.exceptions import PermissionDenied
+from django.contrib.auth.models import Permission
 # Create your views here.
 
 
@@ -61,8 +64,9 @@ def JobDetialView(request,id):
 
 # creation of objects
 @login_required
-@permission_required("server.can_add_Course")
 def AddCoursesView(request):
+    if not request.user.is_superuser :
+        return HttpResponse("<h1>You don't have permission!</h1>")
     form = CourseForm(request.POST,request.FILES)
     if request.method == "POST":
         if form.is_valid():
@@ -73,8 +77,9 @@ def AddCoursesView(request):
     return render(request,"addcourse.html",{"form":form})
 
 @login_required
-@permission_required("server.can_add_CareerPath")
 def AddCareerPathView(request):
+    if not request.user.is_superuser :
+        return HttpResponse("<h1>You don't have permission!</h1>")
     form = CareerPathForm(request.POST,request.FILES)
     if request.method == "POST":
         if form.is_valid():
@@ -84,8 +89,9 @@ def AddCareerPathView(request):
             return render(request,"addpath.html",{"form":form})
     return render(request,"addpath.html",{"form":form})
 @login_required
-@permission_required("server.can_add_Jobs")
 def AddJobView(request):
+    if not request.user.is_superuser :
+        return HttpResponse("<h1>You don't have permission!</h1>")
     form = JobsForm(request.POST,request.FILES)
     if request.method == "POST":
         if form.is_valid():
@@ -94,19 +100,23 @@ def AddJobView(request):
         else:
             return render(request,"addjobs.html",{"form":form})
     return render(request,"addjobs.html",{"form":form}) 
+
 @login_required
-@permission_required("server.can_add_Training")
 def AddTrainingView(request):
+    if not (request.user.is_company or request.user.is_superuser or request.user.is_staff)  :
+        return HttpResponse("<h1>You don't have permission</h1>")
     form = TrainingForm(request.POST,request.FILES)
-    if request.method == "POST":
+    if request.method == "POST" :
         if form.is_valid():
             form.save()
         else:
             return render(request,"addtraining.html",{"form":form})
     return render(request,"addtraining.html",{"form":form}) 
+
 @login_required
-@permission_required("server.can_add_EventsAndWorkshops")
 def AddEvents(request):
+    if not request.user.is_superuser :
+        return HttpResponse("<h1>You don't have permission!</h1>")
     form = EventsForm(request.POST)
     if request.method == "POST":
         if form.is_valid():
@@ -115,107 +125,47 @@ def AddEvents(request):
             return render(request,"addevents.html",{"form":form})
     return render(request,"addevents.html",{"form":form})
 
-# updating objects
-@login_required
-@permission_required("server.can_change_Course")
-def UpdateCourse(request,id):
-    obj = get_object_or_404(id=id)
-    form = EventsForm(request.POST, instance=obj)
-    if request.method == "POST":
-        if form.is_valid():
-            form.save()
-        else:
-            return render(request,"addcourse.html", {"form": form})
-        return render(request,"events.html")
-    return render(request,"addcourse.html", {"form": form})
-
-@login_required       
-@permission_required("server.can_change_Jobs")
-def UpdateJob(request,id):
-
-    obj = get_object_or_404(id=id)
-    form = EventsForm(request.POST, instance=obj)
-    if request.method == "POST":
-        if form.is_valid():
-            form.save()
-        else:
-            return render(request,"addcourse.html", {"form": form})
-        return render(request,"events.html")
-    return render(request,"addcourse.html", {"form": form})
-@login_required
-@permission_required("server.can_change_CareerPath")
-def UpdateCareerPath(request,id):
-    obj = get_object_or_404(id=id)
-    form = EventsForm(request.POST, instance=obj)
-    if request.method == "POST":
-        if form.is_valid():
-            form.save()
-        else:
-            return render(request,"addcourse.html", {"form": form})
-        return render(request,"events.html")
-    return render(request,"addcourse.html", {"form": form})
-@login_required
-@permission_required("server.can_change_EventsAndWorkshops")
-def UpdateEvents(request,id):
-    obj = get_object_or_404(id=id)
-    form = EventsForm(request.POST, instance=obj)
-    if request.method == "POST":
-        if form.is_valid():
-            form.save()
-        else:
-            return render(request,"addcourse.html", {"form": form})
-        return render(request,"events.html")
-    return render(request,"addcourse.html", {"form": form})
-
-@login_required
-@permission_required("server.can_change_Training")
-def UpdateTraining(request,id):
-    obj = get_object_or_404(id=id)
-    form = EventsForm(request.POST, instance=obj)
-    if request.method == "POST":
-        if form.is_valid():
-            form.save()
-        else:
-            return render(request,"addcourse.html", {"form": form})
-        return render(request,"events.html")
-    return render(request,"addcourse.html", {"form": form})
-
 
 #  deleting objects
 @login_required
-@permission_required("server.can_delete_Course")
 def DeleteCourse(request,id):
+    if not request.user.is_superuser :
+        return HttpResponse("<h1>You don't have permission!</h1>")
     if request.method == "DELETE":
         obj = Course.objects.get(id=id)
         obj.delete()
         return redirect(CoursesView)
 @login_required
-@permission_required("server.can_delete_Jobs")        
 def DeleteJob(request,id):
+    if not request.user.is_superuser :
+        return HttpResponse("<h1>You don't have permission!</h1>")
     if request.method == "DELETE":
         obj = Course.objects.get(id=id)
         obj.delete()
         return redirect(JobsView)
 
 @login_required
-@permission_required("server.can_delete_CareerPath")
 def DeleteCareerPath(request,id):
+    if not request.user.is_superuser :
+        return HttpResponse("<h1>You don't have permission!</h1>")
     if request.method == "DELETE":
         obj = Course.objects.get(id=id)
         obj.delete()
         return redirect(CareerPathView)
-    
+
 @login_required
-@permission_required("server.can_delete_EventsAndWorkshops")
 def DeleteEvents(request,id):
+   if not request.user.is_superuser :
+        return HttpResponse("<h1>You don't have permission!</h1>")
    if request.method == "DELETE":
         obj = Course.objects.get(id=id)
         obj.delete()
         return redirect(EventsView)
     
 @login_required
-@permission_required("server.can_delete_Training")    
 def DeleteTraining(request, id):
+    if not request.user.is_superuser :
+        return HttpResponse("<h1>You don't have permission!</h1>")
     if request.method == "DELETE":
         obj= Training.objects.get(id=id)
         obj.delete()
@@ -237,8 +187,11 @@ def ContactUs(request):
             
 
 
-# @login_required
+
 def FeedBack(request):
+    if not request.user.is_authenticated :
+        return redirect('login')
+    
     if request.method == "POST":
         name = request.POST.get("name")
         phone = request.POST.get("phone")
@@ -262,3 +215,70 @@ def RoadMap_blue_teaming(request):
     return render(request, "roadmap-blue.html")
 def RoadMap_red_teaming(request):
     return render(request, "roadmap-red.html")
+
+
+
+
+# updates
+
+
+
+# @login_required       
+# def UpdateJob(request,id):
+#     obj = get_object_or_404(id=id)
+#     form = EventsForm(request.POST, instance=obj)
+#     if request.method == "POST":
+#         if form.is_valid():
+#             form.save()
+#         else:
+#             return render(request,"addcourse.html", {"form": form})
+#         return render(request,"events.html")
+#     return render(request,"addcourse.html", {"form": form})
+# @login_required
+# @permission_required("server.can_change_CareerPath")
+# def UpdateCareerPath(request,id):
+#     obj = get_object_or_404(id=id)
+#     form = EventsForm(request.POST, instance=obj)
+#     if request.method == "POST":
+#         if form.is_valid():
+#             form.save()
+#         else:
+#             return render(request,"addcourse.html", {"form": form})
+#         return render(request,"events.html")
+#     return render(request,"addcourse.html", {"form": form})
+# @login_required
+# @permission_required("server.can_change_EventsAndWorkshops")
+# def UpdateEvents(request,id):
+#     obj = get_object_or_404(id=id)
+#     form = EventsForm(request.POST, instance=obj)
+#     if request.method == "POST":
+#         if form.is_valid():
+#             form.save()
+#         else:
+#             return render(request,"addcourse.html", {"form": form})
+#         return render(request,"events.html")
+#     return render(request,"addcourse.html", {"form": form})
+
+# @login_required
+# def UpdateCourse(request,id):
+#     obj = get_object_or_404(id=id)
+#     form = EventsForm(request.POST, instance=obj)
+#     if request.method == "POST":
+#         if form.is_valid():
+#             form.save()
+#         else:
+#             return render(request,"addcourse.html", {"form": form})
+#         return render(request,"events.html")
+#     return render(request,"addcourse.html", {"form": form})
+# @login_required
+# @permission_required("server.can_change_Training")
+# def UpdateTraining(request,id):
+#     obj = get_object_or_404(id=id)
+#     form = EventsForm(request.POST, instance=obj)
+#     if request.method == "POST":
+#         if form.is_valid():
+#             form.save()
+#         else:
+#             return render(request,"addcourse.html", {"form": form})
+#         return render(request,"events.html")
+#     return render(request,"addcourse.html", {"form": form})

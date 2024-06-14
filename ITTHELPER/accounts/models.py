@@ -6,6 +6,8 @@ class CustomUser(AbstractUser):
     phone_number = models.CharField(max_length=15,default=None,unique=True)
     objects = MyUserManager()
     email_is_verified = models.BooleanField(default=False)
+    img = models.ImageField(upload_to='user-images/',default="default_user.jpg")
+    is_company = models.BooleanField(default=False)
 
     REQUIRED_FIELDS = ["email","phone_number"]
 

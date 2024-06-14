@@ -137,6 +137,7 @@ def sign_up_user(request):
             password1= request.POST.get("password1")
             password2= request.POST.get("password2")
             phone_number = request.POST.get("phone")
+            is_company = request.POST.get('is_company')
             # date_of_birth = request.POST.get("date_of_birth")
             if password2 != password1 :
                 messages.warning(request,"Passwords didn't match")
@@ -148,7 +149,8 @@ def sign_up_user(request):
                     email=email,
                     phone_number=phone_number,
                     first_name = first_name,
-                    last_name=last_name
+                    last_name=last_name,
+                    is_company=is_company
                     )
                     user.set_password(password)
                     user.save()
@@ -230,6 +232,22 @@ def change_info(request):
             return redirect('profile')
         messages.success(request,"Your info was updated!")
         return redirect('profile')
+
+def change_pic(request):
+    if not request.user.is_authenticated :
+        return redirect('login')
+    if request.method == "POST":
+        try :
+            user= request.user
+            img = request.FILES['image']
+            user.img=img
+            user.save()
+        except :
+            messages.error(request, "Something went wrong.")
+            return redirect('profile')
+        messages.success(request,"Your pictue was Changed!")
+        return redirect('profile')
+             
 
 def change_password(request):
     if not request.user.is_authenticated :

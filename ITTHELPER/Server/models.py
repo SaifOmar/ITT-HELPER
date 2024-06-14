@@ -4,24 +4,57 @@ from django.db import models
 # many to many relations 
 from django.db import models
 from django.conf import settings
+from datetime import datetime
+from django.utils.timezone import now
 
-CareerPath_CHOICES = [
-    ('path1', 'Path 1'),
-    ('path2', 'Path 2'),
-    # ... other choices
-]
+class FirstSteps(models.Model):
+    first_steps = models.CharField(max_length=50)
+    def __str__ (self):
+        return f"{self.first_steps}"
+class SecondSteps(models.Model):
+    seconds_steps = models.CharField(max_length=50)
+    def __str__ (self):
+        return f"{self.seconds_steps}"
+class ThirdSteps(models.Model):
+    third_steps = models.CharField(max_length=50)
+    def __str__ (self):
+        return f"{self.third_steps}"
+class FourthSteps(models.Model):
+    fourth_steps = models.CharField(max_length=50)
+    def __str__ (self):
+        return f"{self.fourth_steps}"
 
 class CareerPath(models.Model):
+    CareerPath_CHOICES = [
+        ('penetraion testing','Penetraion Testing'),
+        ('blue teaming', 'Blue Teaming'),
+        ('red teaming', 'Rlue Teaming'),
+        # ... other choices
+    ]
     Paths = models.CharField(max_length=50, choices=CareerPath_CHOICES)
+    describition = models.TextField(max_length=300,default="",null=False,blank=False)
     image = models.ImageField(upload_to='career_path_images/', blank=True, null=True)
     
     def __str__ (self):
         return f"{self.Paths}"
+    
+class RoadMap(models.Model):
+    path = models.ForeignKey(CareerPath, related_name='path',on_delete=models.CASCADE,default=1)
+    first_steps = models.ForeignKey(FirstSteps, related_name='firstSteps', on_delete=models.CASCADE,null=True)
+    second_steps = models.ForeignKey(SecondSteps, related_name='secondSteps', on_delete=models.CASCADE,null=True)
+    third_steps = models.ForeignKey(ThirdSteps, related_name='thirdSteps', on_delete=models.CASCADE,null=True)
+    fourth_steps = models.ForeignKey(FourthSteps, related_name='fourtSteps', on_delete=models.CASCADE,null=True)
+    def __str__ (self):
+        return f"{self.path}'s Roadmap"
+
 
 class EventsAndWorkshops(models.Model):
+    Price = models.DecimalField(max_digits=9,decimal_places=2,default=0)
     event = models.CharField(max_length=100)
-    EventTime = models.TimeField()
-    Eventplace = models.CharField(max_length=100)
+    EventTime = models.TimeField(null=False,blank=False,default=now)
+    EventDate = models.DateField(null=False,blank=False,default=now)
+    Eventplace = models.CharField(max_length=100,null=False,blank=False)
+    Deadline = models.DateField(null=True,blank=True,auto_now_add=True)
     EventPath = models.ManyToManyField(CareerPath, blank=False, related_name="EventsAndWorkshops")
     image = models.ImageField(upload_to='event_images/', blank=True, null=True)
 
@@ -42,20 +75,23 @@ class Company(models.Model):
 
 class Training(models.Model):
     TrainingName = models.CharField(max_length=100)
-    TrainingTime = models.TimeField()
+    TrainingDate = models.DateField(null=False,blank=False,default=now)
+    TrainingTime = models.TimeField(null=False,blank=False,default=now)
     TrainingPlace = models.CharField(max_length=100)
     TrainingCompany = models.ManyToManyField(Company, blank=True, related_name="Training")
     image = models.ImageField(upload_to='training_images/', blank=True, null=True)
 
     def __str__ (self):
         return f"{self.TrainingName}"
+    
 
 class Course(models.Model):
     CourseName = models.CharField(max_length=100)
-    Path = models.ManyToManyField(CareerPath, blank=False, related_name="Courses")
+    author = models.CharField(max_length=150,null=True,blank=True,default="zero")
     RelatedEvents = models.ManyToManyField(EventsAndWorkshops, blank=True, related_name="Courses")
     image = models.ImageField(upload_to='course_images/', blank=True, null=True)
-    author = models.CharField(max_length=150,null=True,blank=True,default="zero")
+    Path = models.ManyToManyField(CareerPath, blank=False, related_name="Courses")
+    link  = models.CharField(blank=False,null=False, max_length=1000,default="https://www.youtube.com/watch?v=4sYNBViSq-8")
 
     def __str__ (self):
         return f"{self.CourseName}"
@@ -69,7 +105,6 @@ class Jobs(models.Model):
 
     def __str__ (self):
         return f"{self.JobName}"
-
 
 
 

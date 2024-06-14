@@ -159,8 +159,9 @@
         {% endfor %}
         {% endif %}
       <div class="profile-header">
-        <img src="{% static 'img/logo2.png' %}" alt="Profile Picture" width="100" height="100">
-        <button class="btn">Change Profile Picture</button>
+        <img src="{{user.img.url}}" alt="Profile Picture" width="100" height="100">
+        <button style="margin-right: 3%;" class="btn btn-secondary"
+        data-bs-toggle="modal" data-bs-target="#changeProfileModal">Change Profile Picture</button>
       </div>
       <form method="post" action="{% url 'change_user_info' %}">
         {% csrf_token %}
@@ -252,6 +253,31 @@
                 
             </form>
             
+        </div>
+        <!-- <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+        </div> -->
+        </div>
+    </div>
+</div>
+<!-- Change Profile Modal -->
+<div class="modal fade" id="changeProfileModal" tabindex="-1" aria-labelledby="changeProfileModal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h1 class="modal-title fs-5" id="changeProfileModal">Change Picture</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form method= "post" action="{% url 'change-pic' %}" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="form-group">
+                <label for="Image">Image</label>
+                <input type="file" name="image" class="form-control" id="Image" >
+                </div>
+                <button type="submit" class="btn-custom">Change</button>
+            </form>
         </div>
         <!-- <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

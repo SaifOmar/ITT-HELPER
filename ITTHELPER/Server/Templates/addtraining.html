@@ -33,7 +33,7 @@
 					<div class="col-lg-4 col-md-6 col-12">
 						<div class="container my-5 profile-container">
                             <h2>Course Form</h2>
-                                <form method="post" >
+                                <form method="post" enctype="multipart/form-data">
                                     {% csrf_token %}
                                     {% for field in form %}
                                     <div class="row">

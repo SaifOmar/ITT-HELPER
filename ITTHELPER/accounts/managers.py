@@ -1,5 +1,9 @@
 from django.db import models
-from django.contrib.auth.models import BaseUserManager,AbstractUser,Group
+from django.contrib.auth.models import BaseUserManager,AbstractUser,Group,Permission
+from django.contrib.auth.models import Permission
+
+
+
 
 
 class MyUserManager(BaseUserManager):
@@ -23,7 +27,7 @@ class MyUserManager(BaseUserManager):
         if not phone_number :
             raise ValueError("phone number must be set")
         user = self._create_user(email=email,username=username,password=password,phone_number=phone_number,**extra_fields)
-        if extra_fields.get("is_staff") == True:
+        if extra_fields.get("is_company") == True:
             group = Group.objects.get(name="Company")
             user.groups.add(group)
         else :
