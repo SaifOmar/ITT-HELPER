@@ -117,7 +117,7 @@ def AddTrainingView(request):
 def AddEvents(request):
     if not request.user.is_superuser :
         return HttpResponse("<h1>You don't have permission!</h1>")
-    form = EventsForm(request.POST)
+    form = EventsForm(request.POST,request.FILES)
     if request.method == "POST":
         if form.is_valid():
             form.save()
