@@ -23,38 +23,37 @@ class FourthSteps(models.Model):
     fourth_steps = models.CharField(max_length=50)
     def __str__ (self):
         return f"{self.fourth_steps}"
+    
 
 class CareerPath(models.Model):
-    CareerPath_CHOICES = [
-        ('penetraion testing','Penetraion Testing'),
-        ('blue teaming', 'Blue Teaming'),
-        ('red teaming', 'Rlue Teaming'),
-        # ... other choices
-    ]
-    Paths = models.CharField(max_length=50, choices=CareerPath_CHOICES)
+    # CareerPath_CHOICES = [
+    #     ('penetraion testing','Penetraion Testing'),
+    #     ('blue teaming', 'Blue Teaming'),
+    #     ('red teaming', 'Rlue Teaming'),
+    #     # ... other choices
+    # ]
+    Paths = models.CharField(max_length=50)
     describition = models.TextField(max_length=300,default="",null=False,blank=False)
     image = models.ImageField(upload_to='career_path_images/', blank=True, null=True)
-    
+
     def __str__ (self):
         return f"{self.Paths}"
     
 class RoadMap(models.Model):
     path = models.ForeignKey(CareerPath, related_name='path',on_delete=models.CASCADE,default=1)
-    first_steps = models.ForeignKey(FirstSteps, related_name='firstSteps', on_delete=models.CASCADE,null=True)
-    second_steps = models.ForeignKey(SecondSteps, related_name='secondSteps', on_delete=models.CASCADE,null=True)
-    third_steps = models.ForeignKey(ThirdSteps, related_name='thirdSteps', on_delete=models.CASCADE,null=True)
-    fourth_steps = models.ForeignKey(FourthSteps, related_name='fourtSteps', on_delete=models.CASCADE,null=True)
+    html_file = models.CharField(max_length=250,default="")
     def __str__ (self):
         return f"{self.path}'s Roadmap"
+    
 
 
 class EventsAndWorkshops(models.Model):
     Price = models.DecimalField(max_digits=9,decimal_places=2,default=0)
     event = models.CharField(max_length=100)
-    EventTime = models.TimeField(null=False,blank=False,default=now)
-    EventDate = models.DateField(null=False,blank=False,default=now)
+    EventTime = models.TimeField(null=False,blank=False)
+    EventDate = models.DateField(null=False,blank=False)
+    Deadline = models.DateField(null=True,blank=True)
     Eventplace = models.CharField(max_length=100,null=False,blank=False)
-    Deadline = models.DateField(null=True,blank=True,auto_now_add=True)
     EventPath = models.ManyToManyField(CareerPath, blank=False, related_name="EventsAndWorkshops")
     image = models.ImageField(upload_to='event_images/', blank=True, null=True)
 
@@ -62,12 +61,12 @@ class EventsAndWorkshops(models.Model):
         return f"{self.event}"
 
 class Company(models.Model):
-    COMPANY_CHOICES = [
-        ('company1', 'Company 1'),
-        ('company2', 'Company 2'),
-        # ... other choices
-    ]
-    CompanyName = models.CharField(max_length=50, choices=COMPANY_CHOICES)
+    # COMPANY_CHOICES = [
+    #     ('company1', 'Company 1'),
+    #     ('company2', 'Company 2'),
+    #     # ... other choices
+    # ]
+    CompanyName = models.CharField(max_length=50)
     image = models.ImageField(upload_to='company_images/', blank=True, null=True)
 
     def __str__ (self):

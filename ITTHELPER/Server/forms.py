@@ -38,14 +38,15 @@ class EventsForm(ModelForm):
         label="Event Time",
         widget=forms.widgets.TimeInput(attrs={'type':'time'})
     )
-    EventDate = forms.TimeField(
+    EventDate = forms.DateField(
         label="Event Date",
         widget=forms.widgets.DateInput(attrs={'type':'date'})
     )
-    EventDeadline = forms.TimeField(
+    Deadline = forms.DateField(
         label="Event Deadline",
         widget=forms.widgets.DateInput(attrs={'type':'date'})
     )
+
     class Meta :
         model = EventsAndWorkshops
         fields = "__all__"
