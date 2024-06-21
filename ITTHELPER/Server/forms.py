@@ -15,18 +15,35 @@ class CareerPathForm(ModelForm):
         model = CareerPath
         fields = "__all__"
 
-class TrainingForm(ModelForm):
-    TrainingDate= forms.DateField(
-        label='Training Date',
-        widget=forms.widgets.DateInput(attrs={'type':'date'})
-    )
-    TrainingTime= forms.TimeField(
-        label='Training Time',
-        widget=forms.widgets.TimeInput(attrs={'type':'time'})
-    )
-    class Meta :
+# class TrainingForm(ModelForm):
+#     TrainingDate= forms.DateField(
+#         label='Training Date',
+#         widget=forms.widgets.DateInput(attrs={'type':'date'})
+#     )
+#     TrainingTime= forms.TimeField(
+#         label='Training Time',
+#         widget=forms.widgets.TimeInput(attrs={'type':'time'})
+#     )
+#     class Meta :
+#         model = Training
+#         fields = "__all__"
+
+
+
+class TrainingForm(forms.ModelForm):
+    class Meta:
         model = Training
         fields = "__all__"
+        widgets = {
+            'TrainingName': forms.TextInput(attrs={'class': 'form-control'}),
+            'TrainingDate': forms.DateInput(attrs={'class': 'form-control', 'type': 'date'}),
+            'TrainingTime': forms.TimeInput(attrs={'class': 'form-control', 'type': 'time'}),
+            'TrainingPlace': forms.TextInput(attrs={'class': 'form-control'}),
+            'TrainingCompany': forms.SelectMultiple(attrs={'class': 'form-control'}),
+            'image': forms.ClearableFileInput(attrs={'class': 'form-control-file'}),
+        }
+
+
 
 class JobsForm(ModelForm):
     class Meta :

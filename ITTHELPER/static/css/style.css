@@ -53,6 +53,8 @@ body{
 	font-weight: 400;
 	font-size:14px;
 	color:#888;
+	overflow-x: hidden !important; 
+	
 }
 .pro-features {
 	position: fixed;

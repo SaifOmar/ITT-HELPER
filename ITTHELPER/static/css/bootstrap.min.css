@@ -2405,6 +2405,20 @@ select.form-control-lg:not([size]):not([multiple]) {
     transition: background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out
 }
 
+.btn-row{
+    justify-content: center;
+    align-items: center;
+}
+.kh-btn{
+    max-width: 200px; 
+    height: 40px;
+    margin-top: 5%; 
+    display:flex; 
+    justify-content: center;  
+    align-items: center; 
+    text-align: center;
+}
+
 .btn:focus,
 .btn:hover {
     text-decoration: none

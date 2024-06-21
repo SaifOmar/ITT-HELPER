@@ -18,6 +18,34 @@ function validateSignUpForm() {
 
 }</script>
 
+<style>
+    .google-signup {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.btn-google {
+    display: flex;
+    align-items: center;
+    background-color: #0C4257;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-google:hover {
+    background-color: #357ae8;
+}
+
+.google-icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+</style>
 <div class="breadcrumbs overlay">
 	<div class="container">
 		<div class="bread-inner">
@@ -130,13 +158,21 @@ function validateSignUpForm() {
 							<div class="form-group">
 							<div class="button-group">
                 <!-- <button type="reset" class="btn">Reset</button> -->
-				&nbsp;<button type="submit" class="btn">Sign Up</button>
+				<button type="submit" class="btn">Sign Up</button>
             </div>
         </div>
     </div>
     <div class="col-lg-7 col-md-8 col-12">
         <p><small>(We will be confirm by an Text Message)</small></p>
     </div>
+	<div class="col-lg-12 col-md-12 col-12"  style="Color: #fff;">
+		<div class="google-signup">
+			<a href="https://accounts.google.com/signup" class="btn btn-google">
+				<img src="{% static 'img/download.png' %}" alt="Log In With Google" class="google-icon">
+				<span>Signup With Google</span>
+			</a>
+		</div>
+	</div>
 	<p>Already have an account?<a href ="{% url 'login' %}" style="color: #000000">  <u>Login</u></p>
 </div>
 </section>

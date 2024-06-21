@@ -47,11 +47,12 @@
 							</div>
 						</div>
 						{% endfor %}
-						
+						<div class="btn-row row">
+
 							{% if user.is_superuser %}	
-							<a class="btn btn-dark" href="{% url 'create_path' %}"  style="max-width: 13%; text-align: center; 
-							justify-content: center;  margin-top: 5% ; margin-left: 62%;	align-items: center;">Add Path</a>
+							<a class="btn btn-dark kh-btn" href="{% url 'create_path' %}">Add Path</a>
 							{% endif %}
+						</div>
 					</div>
 				</div>
 			</div>

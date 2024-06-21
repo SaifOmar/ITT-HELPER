@@ -2,6 +2,34 @@
 {% load static %}
 {% block title %}Login{% endblock %}
 {% block body%}	
+<style>
+    .google-signup {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.btn-google {
+    display: flex;
+    align-items: center;
+    background-color: #0C4257;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-google:hover {
+    background-color: #357ae8;
+}
+
+.google-icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+</style>
 		<div class="breadcrumbs overlay">
 			<div class="container">
 				<div class="bread-inner">
@@ -38,7 +66,7 @@
         {% endif %}
     <div class="col-lg-6 col-md-12 order-md-2 order-1">
         <div class="appointment-image">
-            <img src="{% static 'img/login.png' %}" alt="#" style="height: 100%; margin-top: 10px;">
+            <img src="{% static 'img/login.png' %}" alt="#" style="height: 100%; margin-top: 30px;">
         </div>
     </div>
     <div class="col-lg-6 col-md-12 order-md-1 order-2">
@@ -49,14 +77,14 @@
     <div class="row">
         <div class="col-lg-12 col-md-12 col-12"> <!-- Change the column width to span the full width -->
             <div class="form-group">
-                <input name="username" type="text" placeholder="Username" style="width: 190%;"> <!-- Set width to 100% -->
+                <input name="username" type="text" placeholder="Username" style="width: 100%;"> <!-- Set width to 100% -->
             </div>
         </div>
     </div>
     <div class="row">
         <div class="col-lg-12 col-md-12 col-12"> <!-- Change the column width to span the full width -->
             <div class="form-group">
-                <input name="password" type="password" placeholder="Password" style="width: 190%;"> <!-- Set width to 100% -->
+                <input name="password" type="password" placeholder="Password" style="width: 100%;"> <!-- Set width to 100% -->
             </div>
         </div>
     </div>
@@ -64,10 +92,18 @@
         <div class="col-lg-5 col-md-4 col-12">
             <div class="form-group">
                 <div class="button-group">
-                &nbsp; <button type="submit" class="btn">Log In</button>
+                <button type="submit" class="btn">Log In</button>
                 <button type="button" class="btn"> <a href="{% url 'signup' %}">Sign Up</a></button>
                 </div>
                 
+            </div>
+        </div>
+        <div class="col-lg-12 col-md-12 col-12"  style="Color: #fff;">
+            <div class="google-signup">
+                <a href="" class="btn btn-dark btn-google">
+                    <img src="{% static 'img/download.png' %}" alt="Log In With Google" class="google-icon">
+                    <span>Log In With Google</span>
+                </a>
             </div>
         </div>
     </div>

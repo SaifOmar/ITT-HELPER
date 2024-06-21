@@ -43,20 +43,20 @@
 									<li><i class="icofont icofont-ui-check"></i>Deadline: {{event.Deadline}}</li>
 								</ul>
 								<div class="table-bottom">
-									<a class="btn" href="#">Book Now</a>
+									<a class="btn btn-dark" href="#">Book Now</a>
 								</div>
 								<!-- Table Bottom -->
 							</div>
 						</div>
 						{% endfor %}
 						
+					</div>	
 						{% if user.is_superuser %}	
-						<a class="btn btn-dark" href="{% url 'create_event' %}"  style="max-width: 40%; text-align: center; 
-							justify-content: center;  margin-top: 5% ; margin-left: 0%;	align-items: center;">Add Event</a>
-							{% endif %}
-							<!-- End Single Table-->
-						</div>	
-					</div>
+						<div class="row btn-row">
+							<a class="btn btn-dark kh-btn" href="{% url 'create_event' %}">Add Event</a>
+								{% endif %}
+								<!-- End Single Table-->
+						</div>
 			</div>	
 		</section>	
 		<!--/ End Pricing Table -->
