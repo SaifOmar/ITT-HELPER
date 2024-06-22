@@ -9,7 +9,7 @@ class CustomUser(AbstractUser):
     img = models.ImageField(upload_to='user-images/',default="default_user.jpg")
     is_company = models.BooleanField(default=False)
 
-    REQUIRED_FIELDS = ["email","phone_number"]
+    REQUIRED_FIELDS = ["email"]
 
 
     def __str__(self):

@@ -400,7 +400,7 @@ def oauth_redirect(request):
     "&client_id={client_id}"
     "&redirect_uri={redirect_uri}"
     "&scope=openid%20email%20profile"
-    ).format(client_id = settings.GOOGLE_CILENT_ID,
+    ).format(client_id = settings.GOOGLE_CLIENT_ID,
     redirect_uri =settings.GOOGLE_REDIRECT_URI)
     return redirect(google_redirect_url)
 
@@ -409,8 +409,8 @@ def callback(request):
         token_url = "https://oauth2.googleapis.com/token"
         token_date = {
             "code": code,
-            "clinet_id": settings.GOOGLE._CLIENT_ID,
-            "clinet_secret":settings.GOOGLE_CLINET_ID,
+            "clinet_id": settings.GOOGLE_CLIENT_ID,
+            "clinet_secret":settings.GOOGLE_CLIENT_SECRET,
             "redirect_uri": settings.GOOGLE_REDIRECT_URI,
             "grant_type":"authorization_code",
         }
@@ -422,12 +422,17 @@ def callback(request):
         user_info_parametars = {"access_token":access_token}
         user_info_r = requests.get(user_info_url,params=user_info_parametars)
         user_info  = user_info_r.json()
+        print(user_info)
 
-        user = CustomUser.objects.get(user_info["id"])
+        user = CustomUser.objects.get(user_info["email"])
 
         if user :
+            email = user_info["email"]
+            password = user.password
+            user = authenticate(u_e_p = email, password= password)
             login(request,user)
-            return redirect()
+            messages.error(request,"smth went wrong")
+            return redirect('login')
         
         elif not user :
             try :
@@ -437,9 +442,13 @@ def callback(request):
                 # make username from email (before@) or random username using the email and make phone number not necesaary to sign up
                 first_name = user_info["given_name"],
                 last_name = user_info["family_name"],
+                username = user_info["given_name"] + user_info["family_name"]
                                       )
+                user.set_password(email)
+                user.save()
+                user = authenticate(u_e_p = email , password=password)
                 login(request,user)
-                return redirect()
+                return redirect('home')
             except :
                 (ValueError,TypeError,OverflowError)
                 messages.error(request,"we failed to log you in")

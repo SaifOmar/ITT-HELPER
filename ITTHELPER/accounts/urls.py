@@ -34,5 +34,6 @@ urlpatterns = [
     path("change_forgot_password/",views.change_forgot_password,name="change_forgot_pw"),
     path("forgot_password",views.forgot_password,name="forgot_password"),
     path("forgot_password_callback/<uidb64>/<token>",views.forgot_password_callback,name="forgot_password_callback"),
-    path("callback",views.callback,name="callback")
+    path("google-login",views.oauth_redirect,name="google-login"),
+    path("callback/",views.callback,name="callback")
 ]

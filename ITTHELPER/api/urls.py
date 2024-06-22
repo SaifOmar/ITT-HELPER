@@ -14,7 +14,10 @@ router.register(r"paths", views.path_view)
 router.register(r"training", views.training_view)
 router.register(r"events", views.events_view)
 
+
 urlpatterns = [
+    path("contact-us", views.contact_us.as_view(), name="conatact_us"),
+    path("feedback", views.feedback.as_view(), name="feedback")
     # path('forgot-password/', ForgotPasswordFormView.as_view()), 
     ]
     
