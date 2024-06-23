@@ -167,7 +167,7 @@ function validateSignUpForm() {
     </div>
 	<div class="col-lg-12 col-md-12 col-12"  style="Color: #fff;">
 		<div class="google-signup">
-			<a href="https://accounts.google.com/signup" class="btn btn-google">
+			<a href="{% url 'google-login' %}" class="btn btn-google">
 				<img src="{% static 'img/download.png' %}" alt="Log In With Google" class="google-icon">
 				<span>Signup With Google</span>
 			</a>

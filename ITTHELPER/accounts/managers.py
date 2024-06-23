@@ -24,8 +24,6 @@ class MyUserManager(BaseUserManager):
             raise ValueError("First Name must be set")
         # if not extra_fields.get("date_of_birth"):
         #     raise ValueError("You must enter your date of birth")
-        if not phone_number :
-            raise ValueError("phone number must be set")
         user = self._create_user(email=email,username=username,password=password,phone_number=phone_number,**extra_fields)
         if extra_fields.get("is_company") == True:
             group = Group.objects.get(name="Company")
