@@ -51,7 +51,7 @@
             {% endfor %}
         </div>
 
-        {% if user.is_superuser %}
+        {% if user.is_company %}
             <div class="text-center mt-4 btn-row ">
                 <a class="btn btn-dark kh-btn" href="{% url 'create_training' %}">Add Training</a>
             </div>

@@ -25,7 +25,7 @@ from django.contrib import messages
 from django.contrib.auth.hashers import check_password
 from django.conf import settings 
 import requests
-
+from django.contrib.auth.backends import ModelBackend
 # Create your views here.
 
 # These are tthe mobile app views
@@ -138,10 +138,13 @@ def sign_up_user(request):
             password2= request.POST.get("password2")
             phone_number = request.POST.get("phone")
             is_company = request.POST.get('is_company')
-            # date_of_birth = request.POST.get("date_of_birth")
             if password2 != password1 :
                 messages.warning(request,"Passwords didn't match")
                 return redirect('signup')
+            if is_company == "on" :
+                is_company = True
+            else : 
+                is_company = False 
             try :
                     password = password2
                     user = CustomUser.objects.create(
@@ -155,16 +158,17 @@ def sign_up_user(request):
                     user.set_password(password)
                     user.save()
                     if user :
+                        print(user)
                         user = authenticate(
                             u_e_p = username,
                             password=password)
                         login(request,user)
-                        return redirect('verify_email')
+                        return redirect('home')
                     else :
-                        messages.error(request,"we couldn't sign you up 1")
+                        messages.error(request,"we couldn't sign you up")
                         return redirect('signup')
             except: 
-                    messages.error(request,"we couldn't sign you up 2")
+                    messages.error(request,"we couldn't sign you up")
                     return redirect('signup')
     return render(request,'signup.html')
 
@@ -393,68 +397,87 @@ def verify_email_complete(request):
         return render(request, 'user/verify_email_complete.html')
 
 
+
 def oauth_redirect(request):
     google_redirect_url = (
-    "https://accounts.google.com/o/oauth2/auth"
-    "?response_type=code"
-    "&client_id={client_id}"
-    "&redirect_uri={redirect_uri}"
-    "&scope=openid%20email%20profile"
-    ).format(client_id = settings.GOOGLE_CLIENT_ID,
-    redirect_uri =settings.GOOGLE_REDIRECT_URI)
+        "https://accounts.google.com/o/oauth2/auth"
+        "?response_type=code"
+        "&client_id={client_id}"
+        "&redirect_uri={redirect_uri}"
+        "&scope=openid%20email%20profile"
+    ).format(client_id=settings.GOOGLE_CLIENT_ID,
+             redirect_uri=settings.GOOGLE_REDIRECT_URI)
     return redirect(google_redirect_url)
 
 def callback(request):
-        code = request.GET.get("code")
-        token_url = "https://oauth2.googleapis.com/token"
-        token_date = {
-            "code": code,
-            "clinet_id": settings.GOOGLE_CLIENT_ID,
-            "clinet_secret":settings.GOOGLE_CLIENT_SECRET,
-            "redirect_uri": settings.GOOGLE_REDIRECT_URI,
-            "grant_type":"authorization_code",
-        }
-        token_r = requests.post(token_url, data = token_date)
-        token_json = token_r.json()
-        access_token = token_json.get("access_token")
+    code = request.GET.get("code")
+    token_url = "https://oauth2.googleapis.com/token"
+    token_data = {
+        "code": code,
+        "client_id": settings.GOOGLE_CLIENT_ID,
+        "client_secret": settings.GOOGLE_CLIENT_SECRET,
+        "redirect_uri": settings.GOOGLE_REDIRECT_URI,
+        "grant_type": "authorization_code",
+    }
+    token_r = requests.post(token_url, data=token_data)
+    token_json = token_r.json()
 
-        user_info_url= "https://www.googleapis.com/oauth2/v1/userinfo"
-        user_info_parametars = {"access_token":access_token}
-        user_info_r = requests.get(user_info_url,params=user_info_parametars)
-        user_info  = user_info_r.json()
-        print(user_info)
+   
+    # print("Token Response:", token_json)
 
-        user = CustomUser.objects.get(user_info["email"])
+    access_token = token_json.get("access_token")
+    if not access_token:
+        messages.error(request, "Failed to obtain access token.")
+        return redirect('login')
 
-        if user :
-            email = user_info["email"]
-            password = user.password
-            user = authenticate(u_e_p = email, password= password)
-            login(request,user)
-            messages.error(request,"smth went wrong")
+    user_info_url = "https://www.googleapis.com/oauth2/v1/userinfo"
+    user_info_params = {"access_token": access_token}
+    user_info_r = requests.get(user_info_url, params=user_info_params)
+    user_info = user_info_r.json()
+
+   
+    # print("User Info Response:", user_info)
+
+    email = user_info.get("email")
+    if not email:
+        messages.error(request, "Email not provided by Google.")
+        return redirect('login')
+
+    try:
+        user = CustomUser.objects.get(email=email)
+    except CustomUser.DoesNotExist:
+        user = None
+
+    if user:
+        login(request, user,backend='django.contrib.auth.backends.ModelBackend')
+        if user:
+            return redirect('home')
+        else:
+            messages.error(request, "Authentication failed.")
             return redirect('login')
-        
-        elif not user :
-            try :
-                CustomUser.objects.create(
-                email= user_info["email"],
-                # would fail bcs phone and username are needed i think
-                # make username from email (before@) or random username using the email and make phone number not necesaary to sign up
-                first_name = user_info["given_name"],
-                last_name = user_info["family_name"],
-                username = user_info["given_name"] + user_info["family_name"]
-                                      )
-                user.set_password(email)
-                user.save()
-                user = authenticate(u_e_p = email , password=password)
-                login(request,user)
+    else:
+        try:
+            user = CustomUser.objects.create(
+                email=email,
+                first_name=user_info.get("given_name", ""),
+                last_name=user_info.get("family_name", ""),
+                username=user_info.get("given_name", "") + user_info.get("family_name", "")
+            )
+            print(user)
+            user.set_password(email)
+            user.save()
+            user = authenticate(u_e_p=email, password=email)
+            if user:
+                print(user)
+                login(request, user)
                 return redirect('home')
-            except :
-                (ValueError,TypeError,OverflowError)
-                messages.error(request,"we failed to log you in")
-                return redirect()
-        else :
-            return render(request,"something_blew_up.html")     
+            else:
+                messages.error(request, "Authentication failed after user creation.")
+                return redirect('login')
+        except (ValueError, TypeError, OverflowError) as e:
+            messages.error(request, f"Failed to create user: {e}")
+            return redirect('login')
+  
 
 # display for errors
 def something_blew_up(request):

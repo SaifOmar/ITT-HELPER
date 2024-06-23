@@ -41,7 +41,7 @@
                             <div class="news-content">
                                 <h2>{{course.CourseName}}</h2>
                                 <h5>{{training.TrainingCompany.first.CompanyName}}</h5>
-                                <p class="text"> <a href="http://127.0.0.1:8000/path">{{course.Path.first}}</a></p>
+                                <p class="text"> <a href="http://127.0.0.1:8000/path">{{course.Path.first | title}}</a></p>
                                 <p class="text"><a href="http://127.0.0.1:8000/events">{{course.RelatedEvents.first}}</a></p>
                                 <p class="text">{{course.author}}</p>
 								<div class="date"><a href="{{course.link}}" target="_blank">View Course</a></div>
